@@ -5,8 +5,8 @@ Il s'agit d'un framework dans le but de faciliter la vente de sites web.
 ## Todo
 
 1. Créer 4 presets de pages pour tester les layouts
-- [ ] V Texte seul centré
-- [ ] V Texte avec un produit
+- [x] Texte seul centré
+- [x] Texte avec un produit
 - [ ] Galerie photo
 - [ ] Galerie produits
 - [ ] Menu de restaurant
