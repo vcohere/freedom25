@@ -9,8 +9,8 @@ Option Analytics ?
 TODO :
 
 Créer 4 presets de pages pour tester les layouts
-	Texte seul centré
-	Texte avec un produit
+	V Texte seul centré
+	V Texte avec un produit
 	Galerie photo
 	Galerie produits
 	Menu de restaurant
@@ -26,3 +26,9 @@ Créer 3 types de navigation
 Créer les 2 types de layout
 	Onepage
 	Multi-pages
+
+Récupération des données via l'API côté front
+
+Création de l'API côté serveur
+	Stockage en fichier CSV
+	Récupération des données sur fichier CSV

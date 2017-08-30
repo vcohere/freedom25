@@ -1,0 +1,24 @@
+{
+  "name": "freedom35",
+  "version": "1.0.0",
+  "description": "Easy websites, easy money, easy life",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vcohere/freedom35.git"
+  },
+  "author": "Valentin COHERE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vcohere/freedom35/issues"
+  },
+  "homepage": "https://github.com/vcohere/freedom35#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "fast-csv": "^2.4.0"
+  }
+}
