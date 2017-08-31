@@ -19,6 +19,11 @@
   "homepage": "https://github.com/vcohere/freedom35#readme",
   "dependencies": {
     "express": "^4.15.4",
-    "fast-csv": "^2.4.0"
+    "fast-csv": "^2.4.0",
+    "promise": "^8.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0"
   }
 }

@@ -4,7 +4,8 @@ Il s'agit d'un framework dans le but de faciliter la vente de sites web.
 
 ## Todo
 
-1. Créer 4 presets de pages pour tester les layouts
+1. Presets de pages pour tester les layouts
+- [ ] Landing page
 - [x] Texte seul centré
 - [x] Texte avec un produit
 - [ ] Galerie photo
@@ -13,18 +14,18 @@ Il s'agit d'un framework dans le but de faciliter la vente de sites web.
 - [ ] Page de contact
 - [ ] Footer
 
-1. Créer 3 types de navigation
+1. Multiples types de navigation
 - [ ] Logo a gauche, menu a droite
 - [ ] Logo centré, menu en dessous
 - [ ] Logo centré, menu en dessous, logo disparait au scroll
 - [ ] Logo centré, menu autour du logo
 
-1. Créer les 2 types de layout
+1. 2 différents types de layout
 - [ ] Onepage
 - [ ] Multi-pages
 
 1. Récupération des données via l'API côté front
 
-1. Création de l'API côté serveur
+1. API côté serveur
 - [ ] Stockage en fichier CSV
-- [ ] Récupération des données sur fichier CSV
+- [x] Récupération des données sur fichier CSV
