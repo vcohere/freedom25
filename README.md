@@ -15,8 +15,8 @@ Il s'agit d'un framework dans le but de faciliter la vente de sites web.
 - [ ] Footer
 
 1. Multiples types de navigation
-- [ ] Logo a gauche, menu a droite
-- [ ] Logo centré, menu en dessous
+- [x] Logo a gauche, menu a droite
+- [x] Logo centré, menu en dessous
 - [ ] Logo centré, menu en dessous, logo disparait au scroll
 - [ ] Logo centré, menu autour du logo
 
