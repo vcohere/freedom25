@@ -4,7 +4,7 @@ Il s'agit d'un framework dans le but de faciliter la vente de sites web.
 
 ## Todo
 
-Presets de pages pour tester les layouts
+Différentes views
 - [x] Landing page
 - [x] Texte seul centré
 - [x] Texte avec un produit
@@ -13,7 +13,8 @@ Presets de pages pour tester les layouts
 - [ ] Menu de restaurant
 - [ ] Page de contact
 - [ ] Footer
-- [ ] Rajouter les controleurs et services aux pages
+- [ ] Rajouter les controleurs aux pages
+- [ ] Panneau d'administration
 
 Multiples types de navigation
 - [x] Logo a gauche, menu a droite
