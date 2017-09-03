@@ -1,4 +1,5 @@
 var http = require('http'),
+		fs = require('fs'),
     express = require('express'),
     serveStatic = require('serve-static'),
 		csv = require('fast-csv'),
@@ -17,26 +18,40 @@ app.get('/*', function(req, res) {
 
 http.createServer(app).listen(port)
 
-var getDatas = new Promise(function(resolve, reject) {
-	var res = new Array()
+var writeData = function(name, content) {
+	//
+	var res = ''
+	storage[name] = content
+
+	for (var key in storage) {
+		res += key + ':' + storage[key] + '\n'
+	}
+
+	fs.writeFileSync('./data.csv', res)
+}
+
+var readData = new Promise(function(resolve, reject) {
+	var res = {}
 
 	csv.fromPath("./data.csv")
 	.on('data', function(data) {
 		var tmp = data[0].split(':')
 		var obj = {}
-		obj[tmp[0]] = tmp[1]
-
-		res.push(obj)
+		res[tmp[0]] = tmp[1]
 	})
 	.on('end', function(data) {
 		resolve(res)
 	})
 })
 
-getDatas.then(function(data) {
-	storage = data
-	//storeDatas();
-	//console.log(storage)
-})
+var getData = function() {
+	readData.then(function(res) {
+		storage = res
+	})
+}
 
 console.log('Started\nhttp://localhost:8080/')
+getData()
+setTimeout(function() {
+	writeData('data2', 'yay success !')
+}, 1000)

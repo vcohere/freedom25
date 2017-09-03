@@ -31,6 +31,8 @@ Il s'agit d'un framework dans le but de faciliter la vente de sites web.
 - [ ] Modification dynamique des couleurs et fonts
 
 1. API côté serveur
-- [ ] Stockage en fichier CSV
+- [x] Stockage en fichier CSV
 - [x] Récupération des données sur fichier CSV
 - [ ] API qui renvoie les infos du fichier CSV
+- [ ] Remplir la galerie photos avec soit des images téléchargées, ou via un Instagram
+- [ ] Récupérer les données à chaque changement du fichier CSV
