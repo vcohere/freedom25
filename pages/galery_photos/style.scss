@@ -1,0 +1,30 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+// REMOVE UPPER PART WHEN DONE PLEASE THANKS
+
+#galery_photos {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	text-align: center;
+
+	.wrap {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 720px;
+		height: 720px;
+		transform: translateX(-50%) translateY(-50%);
+		font-size: 0;
+
+		.picture {
+			width: 200px;
+			height: 200px;
+			margin: 20px;
+		}
+	}
+}

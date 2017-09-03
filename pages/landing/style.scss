@@ -1,0 +1,53 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+// REMOVE UPPER PART WHEN DONE PLEASE THANKS
+
+#landing {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	background: url('background_blackwhite.jpg') no-repeat;
+	background-size: cover;
+
+	.bloc {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		-webkit-transform: translateY(-50%) translateX(-50%);
+		width: 600px;
+		color: #fafafa;
+		text-align: center;
+
+		h1 {
+			text-align: center;
+			font-size: 40px;
+			line-height: 1.6;
+			font-family: 'Bitter', serif;
+			text-align: left;
+		}
+
+		p {
+			line-height: 1.2;
+			font-family: 'Raleway', Helvetica, sans-serif;
+			text-align: left;
+		}
+
+		.button {
+			display: inline-block;
+			padding-left: 30px;
+			padding-right: 30px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			background-color: blue;
+			margin-top: 40px;
+			border-radius: 3px;
+			font-family: 'Raleway', Helvetica, sans-serif;
+			cursor: pointer;
+		}
+	}
+}
