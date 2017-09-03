@@ -13,6 +13,7 @@ Il s'agit d'un framework dans le but de faciliter la vente de sites web.
 - [ ] Menu de restaurant
 - [ ] Page de contact
 - [ ] Footer
+- [ ] Rajouter les controleurs et services aux pages
 
 1. Multiples types de navigation
 - [x] Logo a gauche, menu a droite
