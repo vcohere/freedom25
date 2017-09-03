@@ -1,6 +1,7 @@
 var http = require('http'),
 		fs = require('fs'),
     express = require('express'),
+		pug = require('pug'),
     serveStatic = require('serve-static'),
 		csv = require('fast-csv'),
 		Promise = require('promise')
@@ -10,10 +11,11 @@ var port = 8080,
 
 var app = express()
 
-app.use('/static', serveStatic(__dirname + '/src/static'))
+app.set('view engine', 'pug')
+app.use('/pages', serveStatic(__dirname + '/pages'))
 
-app.get('/*', function(req, res) {
-  res.sendFile('/app/index.html', {root: __dirname})
+app.get('/', function(req, res) {
+  res.render(__dirname + '/index.pug')
 })
 
 http.createServer(app).listen(port)

@@ -22,16 +22,18 @@ Multiples types de navigation
 - [ ] Logo centré, menu autour du logo
 
 2 différents types de layout
-- [ ] Onepage
+- [x] Onepage
 - [ ] Multi-pages
 
 Récupération des données via l'API côté front
+- [x] Passage au moteur de template PUG
 - [ ] Requêtes AJAX
 - [ ] Modification dynamique du texte
 - [ ] Modification dynamique des fonds ( image / couleur unie )
 - [ ] Modification dynamique des couleurs et fonts
 
 API côté serveur
+- [x] Intégration des views avec le serveur
 - [x] Stockage en fichier CSV
 - [x] Récupération des données sur fichier CSV
 - [ ] API qui renvoie les infos du fichier CSV

@@ -20,7 +20,8 @@
   "dependencies": {
     "express": "^4.15.4",
     "fast-csv": "^2.4.0",
-    "promise": "^8.0.1"
+    "promise": "^8.0.1",
+    "pug": "^2.0.0-rc.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
