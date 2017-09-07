@@ -13,8 +13,7 @@ Différentes views
 - [ ] Menu de restaurant
 - [ ] Page de contact
 - [ ] Footer
-- [ ] Rajouter les controleurs aux pages
-- [ ] Panneau d'administration
+- [x] Panneau d'administration
 
 Multiples types de navigation
 - [x] Logo a gauche, menu a droite
