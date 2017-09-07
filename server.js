@@ -1,4 +1,6 @@
-var http = require('http'),
+require("babel-core").transform("code")
+
+const http = require('http'),
 		fs = require('fs'),
     express = require('express'),
 		pug = require('pug'),
@@ -6,54 +8,59 @@ var http = require('http'),
 		csv = require('fast-csv'),
 		Promise = require('promise')
 
-var port = 8080,
-		storage = null
+const port = 8080,
+		app = express()
 
-var app = express()
+var storage = null
+
 
 app.set('view engine', 'pug')
 app.use('/pages', serveStatic(__dirname + '/pages'))
 
-app.get('/', function(req, res) {
-  res.render(__dirname + '/index.pug')
+app.get('/', (req, res) => {
+  res.render(__dirname + '/index.pug', {data: storage})
+})
+
+app.get('/admin', (req, res) => {
+	res.render(__dirname + '/admin.pug', storage)
 })
 
 http.createServer(app).listen(port)
 
-var writeData = function(name, content) {
+const writeData = (name, content) => {
 	//
-	var res = ''
+	let res = ''
 	storage[name] = content
 
-	for (var key in storage) {
+	for (let key in storage) {
 		res += key + ':' + storage[key] + '\n'
 	}
 
 	fs.writeFileSync('./data.csv', res)
 }
 
-var readData = new Promise(function(resolve, reject) {
-	var res = {}
+const readData = new Promise((resolve, reject) => {
+	let res = {}
 
 	csv.fromPath("./data.csv")
-	.on('data', function(data) {
-		var tmp = data[0].split(':')
-		var obj = {}
+	.on('data', (data) => {
+		let tmp = data[0].split(':'),
+	 			obj = {}
+
 		res[tmp[0]] = tmp[1]
 	})
-	.on('end', function(data) {
-		resolve(res)
-	})
+	.on('end', (data) => { resolve(res) })
 })
 
-var getData = function() {
-	readData.then(function(res) {
+const getData = () => {
+	console.log('yo')
+	readData.then((res) => {
+		console.log('Data is ready.')
 		storage = res
 	})
 }
 
-console.log('Started\nhttp://localhost:8080/')
+fs.watch('data.csv', () => { getData() })
+
 getData()
-setTimeout(function() {
-	writeData('data2', 'yay success !')
-}, 1000)
+console.log('Started\nhttp://localhost:8080/')

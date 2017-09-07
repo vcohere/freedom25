@@ -39,4 +39,4 @@ API côté serveur
 - [x] Récupération des données sur fichier CSV
 - [ ] API qui renvoie les infos du fichier CSV
 - [ ] Remplir la galerie photos avec soit des images téléchargées, ou via un Instagram
-- [ ] Récupérer les données à chaque changement du fichier CSV
+- [x] Récupérer les données à chaque changement du fichier CSV
