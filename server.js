@@ -18,11 +18,11 @@ app.set('view engine', 'pug')
 app.use('/pages', serveStatic(__dirname + '/pages'))
 
 app.get('/', (req, res) => {
-  res.render(__dirname + '/index.pug', {data: storage})
+  res.render(__dirname + '/index.pug', storage)
 })
 
 app.get('/admin', (req, res) => {
-	res.render(__dirname + '/admin.pug', storage)
+	res.render(__dirname + '/admin.pug', {data: storage, keys: Object.keys(storage)})
 })
 
 http.createServer(app).listen(port)
@@ -45,18 +45,21 @@ const readData = new Promise((resolve, reject) => {
 	csv.fromPath("./data.csv")
 	.on('data', (data) => {
 		let tmp = data[0].split(':'),
-	 			obj = {}
+				words = tmp[0].split('_')
 
-		res[tmp[0]] = tmp[1]
+		if (!res[words[0]])
+			res[words[0]] = {}
+
+		res[words[0]][words[1]] = tmp[1]
 	})
 	.on('end', (data) => { resolve(res) })
 })
 
 const getData = () => {
-	console.log('yo')
 	readData.then((res) => {
 		console.log('Data is ready.')
 		storage = res
+		console.log(storage)
 	})
 }
 
