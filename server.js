@@ -6,6 +6,7 @@ const http = require('http'),
 		pug = require('pug'),
     serveStatic = require('serve-static'),
 		csv = require('fast-csv'),
+		bodyParser = require('body-parser'),
 		Promise = require('promise')
 
 const port = 8080,
@@ -15,6 +16,8 @@ var storage = null
 
 
 app.set('view engine', 'pug')
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/pages', serveStatic(__dirname + '/pages'))
 
 app.get('/', (req, res) => {
@@ -22,7 +25,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
-	res.render(__dirname + '/admin.pug', {data: storage, keys: Object.keys(storage)})
+	res.render(__dirname + '/pages/admin/admin.pug', {data: storage, keys: Object.keys(storage)})
+})
+
+app.post('/updateContent', (req, res) => {
+	storage = JSON.parse(req.body.data)
 })
 
 http.createServer(app).listen(port)

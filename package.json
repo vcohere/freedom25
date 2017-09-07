@@ -19,6 +19,7 @@
   "homepage": "https://github.com/vcohere/freedom35#readme",
   "dependencies": {
     "babel-core": "^6.26.0",
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "fast-csv": "^2.4.0",
     "promise": "^8.0.1",

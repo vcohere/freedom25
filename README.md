@@ -40,3 +40,4 @@ API côté serveur
 - [ ] Remplir la galerie photos avec soit des images téléchargées, ou via un Instagram
 - [x] Récupérer les données à chaque changement du fichier CSV
 - [ ] Recoder le parser CSV pour ne plus avoir le bug de la virgule
+- [ ] Sécuriser le panneau d'administration
