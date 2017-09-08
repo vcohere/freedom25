@@ -25,7 +25,7 @@ Multiples types de navigation
 - [x] Onepage
 - [ ] Multi-pages
 
-Récupération des données via l'API côté front
+Récupération des données côté front
 - [x] Passage au moteur de template PUG
 - [x] Affichage des données
 - [x] Modification dynamique du texte
