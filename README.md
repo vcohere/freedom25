@@ -18,8 +18,7 @@ Différentes views
 Multiples types de navigation
 - [x] Logo a gauche, menu a droite
 - [x] Logo centré, menu en dessous
-- [ ] Logo centré, menu en dessous, logo disparait au scroll
-- [ ] Logo centré, menu autour du logo
+- [x] Intégrer la navigation au site
 
 2 différents types de layout
 - [x] Onepage
@@ -31,6 +30,7 @@ Récupération des données côté front
 - [x] Modification dynamique du texte
 - [ ] Modification dynamique des fonds ( image / couleur unie )
 - [ ] Modification dynamique des couleurs et fonts
+- [ ] Modification de la navigation
 
 API côté serveur
 - [x] Intégration des views avec le serveur
