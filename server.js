@@ -49,24 +49,33 @@ const writeData = (name, content) => {
 const readData = new Promise((resolve, reject) => {
 	let res = {}
 
-	csv.fromPath("./data.csv")
-	.on('data', (data) => {
-		let tmp = data[0].split(':'),
-				words = tmp[0].split('_')
 
-		if (!res[words[0]])
-			res[words[0]] = {}
+		fs.readFile('./data.csv', 'utf-8', (err, data) => {
+			if (err)
+				reject(err)
 
-		res[words[0]][words[1]] = tmp[1]
-	})
-	.on('end', (data) => { resolve(res) })
+			data = data.split('\n')
+
+			for (i = 0; i < data.length; i++) {
+				if (data[i] === '')
+					continue;
+				let tmp = data[i].split(':'),
+						words = tmp[0].split('_')
+
+				if (!res[words[0]])
+					res[words[0]] = {}
+
+				res[words[0]][words[1]] = tmp[1]
+			}
+
+			resolve(res)
+		})
 })
 
 const getData = () => {
 	readData.then((res) => {
-		console.log('Data is ready.')
 		storage = res
-		console.log(storage)
+		console.log('Data is ready.')
 	})
 }
 
