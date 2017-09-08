@@ -27,8 +27,8 @@ Multiples types de navigation
 
 Récupération des données via l'API côté front
 - [x] Passage au moteur de template PUG
-- [ ] Requêtes AJAX
-- [ ] Modification dynamique du texte
+- [x] Affichage des données
+- [x] Modification dynamique du texte
 - [ ] Modification dynamique des fonds ( image / couleur unie )
 - [ ] Modification dynamique des couleurs et fonts
 
