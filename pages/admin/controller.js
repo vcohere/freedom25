@@ -3,6 +3,9 @@ $(document).ready(function() {
 		var res = new Object();
 		res.landing = new Object();
 		res.textOnly = new Object();
+		res.navigation = new Object();
+
+		res.navigation.choice = $('.navigationChoice:checked').val();
 
 		res.landing.textTitle = $('.landingTextTitle').val();
 		res.landing.colorTitle = $('.landingColorTitle').val();

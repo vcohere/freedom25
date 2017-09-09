@@ -30,7 +30,7 @@ Récupération des données côté front
 - [x] Modification dynamique du texte
 - [ ] Modification dynamique des fonds ( image / couleur unie )
 - [ ] Modification dynamique des couleurs et fonts
-- [ ] Modification de la navigation
+- [x] Modification de la navigation
 
 API côté serveur
 - [x] Intégration des views avec le serveur

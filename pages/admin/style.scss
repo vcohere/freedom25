@@ -17,8 +17,10 @@
 		margin-bottom: 20px;
 	}
 
-	span {
+	h2 {
+		font-size: 20px;
 		margin-top: 20px;
+		margin-bottom: 10px;
 	}
 
 	input, textarea {
@@ -30,6 +32,17 @@
 		border-radius: 4px;
 		border: 1px solid #bdc3c7;
 		font-weight: 300;
+	}
+
+	input[type='radio'] {
+		width: auto;
+		display: inline-block;
+	}
+
+	&.nav label {
+		margin-left: 10px;
+		margin-right: 20px;
+		display: inline-block;
 	}
 
 	textarea {

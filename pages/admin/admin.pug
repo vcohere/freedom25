@@ -7,27 +7,34 @@ html
 		script(src='/pages/admin/jquery-3.2.1.min.js')
 		script(src='/pages/admin/controller.js')
 	body
+		.bloc.nav
+			h1 Navigation
+			h2 Disposition du menu
+			input(type='radio' name='nav' value='nav1' id='nav1' class='navigationChoice' checked=(data.navigation.choice == 'nav1'))
+			label(for='nav1') Type 1
+			input(type='radio' name='nav' value='nav2' id='nav2' class='navigationChoice' checked=(data.navigation.choice == 'nav2'))
+			label(for='nav2') Type 2
 		.bloc.landing
 			h1 Landing page
-			span Texte du titre
+			h2 Texte du titre
 			input(type='text' class='landingTextTitle' value=data.landing.textTitle)
-			span Couleur du titre
+			h2 Couleur du titre
 			input(type='text' class='landingColorTitle' value=data.landing.colorTitle)
-			span Texte du sous-titre
+			h2 Texte du sous-titre
 			textarea(class='landingTextSubtitle') #{data.landing.textSubtitle}
-			span Couleur du sous-titre
+			h2 Couleur du sous-titre
 			input(type='text' class='landingColorSubtitle' value=data.landing.colorSubtitle)
-			span Texte du bouton
+			h2 Texte du bouton
 			input(type='text' class='landingTextButton' value=data.landing.textButton)
-			span Couleur de fond du bouton
+			h2 Couleur de fond du bouton
 			input(type='text' class='landingBgcolorButton' value=data.landing.bgcolorButton)
-			span Couleur du texte du bouton
+			h2 Couleur du texte du bouton
 			input(type='text' class='landingColorButton' value=data.landing.colorButton)
 		.bloc.textOnly
 			h1 Texte seulement
-			span Texte
+			h2 Texte
 			textarea(class='textonlyTextBody') #{data.textOnly.textBody}
-			span Couleur du texte
+			h2 Couleur du texte
 			input(type='text' class='textonlyColorBody' value=data.textOnly.colorTextBody)
 
 		.bloc
