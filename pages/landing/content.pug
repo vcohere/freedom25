@@ -1,12 +1,12 @@
 link(href="https://fonts.googleapis.com/css?family=Bitter|Raleway" rel="stylesheet")
 link(rel="stylesheet" href="/pages/landing/style.min.css")
 
-#landing.container-fluid.page
+#landing.container-fluid.page(style='background-image: url("'+ landing.imageBackground +'")')
 	.row
 		.bloc.col-sm-8
-			h2
+			h2(style='color: ' + landing.colorTitle)
 				| #{landing.textTitle}
-			p.row
+			p.row(style='color: ' + landing.colorSubtitle)
 				| #{landing.textSubtitle}
 				.button.col-sm-4.col-centered
 					| #{landing.textButton}

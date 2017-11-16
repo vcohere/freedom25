@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/pages', serveStatic(__dirname + '/pages'))
 app.use('/navs', serveStatic(__dirname + '/navs'))
 app.use('/lib', serveStatic(__dirname + '/lib'))
+app.use('/img', serveStatic(__dirname + '/img'))
 
 app.get('/', (req, res) => {
   res.render(__dirname + '/index.pug', storage)
