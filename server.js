@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
+	console.log(storage);
 	res.render(__dirname + '/pages/admin/admin.pug', {data: storage, keys: Object.keys(storage)})
 })
 

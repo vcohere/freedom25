@@ -15,8 +15,11 @@ $(document).ready(function() {
 		res.landing.colorButton = $('.landingColorButton').val();
 		res.landing.bgcolorButton = $('.landingBgcolorButton').val();
 
-		res.textOnly.textBody = $('.textonlyTextBody').val();
-		res.textOnly.colorBody = $('.textonlyColorBody').val();
+		res.pres.textTitle = $('.presTextTitle').val();
+		res.pres.colorTitle = $('.presColorTitle').val();
+		res.pres.textSubtitle1 = $('.presTextSubtitle1').val();
+		res.pres.textSubtitle2 = $('.presTextSubtitle2').val();
+		res.pres.textSubtitle3 = $('.presTextSubtitle3').val();
 
 		$.post('/updateContent',
 			{ data: JSON.stringify(res) },

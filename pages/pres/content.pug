@@ -1,0 +1,29 @@
+link(href="https://fonts.googleapis.com/css?family=Bitter|Raleway" rel="stylesheet")
+link(rel="stylesheet" href="/pages/pres/style.min.css")
+
+#galery_photos.container.page
+	.row
+		h1
+			| #{pres.textTitle}
+	.row
+		.col-md-4.box
+			.wrap
+				img(src="/pages/pres/placeholder.png")
+			h2
+				| #{pres.textSubtitle1}
+			p
+				| #{pres.textBody1}
+		.col-md-4.box
+			.wrap
+				img(src="/pages/pres/placeholder.png")
+			h2
+				| #{pres.textSubtitle2}
+			p
+				| #{pres.textBody2}
+		.col-md-4.box
+			.wrap
+				img(src="/pages/pres/placeholder.png")
+			h2
+				| #{pres.textSubtitle3}
+			p
+				| #{pres.textBody3}

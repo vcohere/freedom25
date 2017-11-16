@@ -8,7 +8,14 @@ landing_colorSubtitle:#FFFFFF
 landing_bgcolorButton:#2980B9
 landing_textButton:Lorem ipsum
 landing_colorButton:#FFFFFF
-textOnly_imageBackground:
-textOnly_colorBackground:
-textOnly_textBody:Lorem ipsum dolor sit amet
-textOnly_colorTextBody:#FFFFFF
+pres_imageBackground:
+pres_colorBackground:
+pres_textTitle:Un grand titre, pour un grand site
+pres_colorTitle:#000000
+pres_textSubtitle1:Une présentation propre
+pres_textSubtitle2:Des sites web rapides
+pres_textSubtitle3:Support continu
+pres_textBody1:Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+pres_textBody2:Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.
+pres_textBody3:Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.
+pres_colorTextBody:#FFFFFF

@@ -6,9 +6,9 @@ Il s'agit d'un framework dans le but de faciliter la vente de sites web.
 
 Différentes views
 - [x] Landing page
-- [x] Texte seul centré
 - [x] Texte avec un produit
-- [x] Galerie photo
+- [x] Présentation 3 offres
+- [x] Pricing d'une offre
 - [ ] Galerie produits
 - [ ] Menu de restaurant
 - [ ] Page de contact

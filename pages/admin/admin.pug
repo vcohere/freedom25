@@ -30,12 +30,18 @@ html
 			input(type='text' class='landingBgcolorButton' value=data.landing.bgcolorButton)
 			h2 Couleur du texte du bouton
 			input(type='text' class='landingColorButton' value=data.landing.colorButton)
-		.bloc.textOnly
-			h1 Texte seulement
-			h2 Texte
-			textarea(class='textonlyTextBody') #{data.textOnly.textBody}
-			h2 Couleur du texte
-			input(type='text' class='textonlyColorBody' value=data.textOnly.colorTextBody)
+		.bloc.pres
+			h1 Page de présentation
+			h2 Titre
+			input(type='text' class='presTextTitle' value=data.pres.textTitle)
+			h2 Couleur du titre
+			input(type='text' class='presColorTitle' value=data.pres.colorTitle)
+			h2 Sous-titre 1
+			input(type='text' class='presTextSubtitle1' value=data.pres.textSubtitle1)
+			h2 Sous-titre 2
+			input(type='text' class='presTextSubtitle2' value=data.pres.textSubtitle2)
+			h2 Sous-titre 3
+			input(type='text' class='presTextSubtitle3' value=data.pres.textSubtitle3)
 
 		.bloc
 			.validate
