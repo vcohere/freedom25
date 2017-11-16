@@ -16,10 +16,11 @@ var storage = null
 
 
 app.set('view engine', 'pug')
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/pages', serveStatic(__dirname + '/pages'))
 app.use('/navs', serveStatic(__dirname + '/navs'))
+app.use('/lib', serveStatic(__dirname + '/lib'))
 
 app.get('/', (req, res) => {
   res.render(__dirname + '/index.pug', storage)

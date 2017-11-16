@@ -2,12 +2,14 @@ doctype html
 html
 	head
 		title Freedom35
+		link(href='lib/bootstrap/css/bootstrap.css' rel='stylesheet')
 	body
 		if (navigation.choice == 'nav1')
 			include navs/nav1/content.pug
 		if (navigation.choice == 'nav2')
 			include navs/nav2/content.pug
+
 		include pages/landing/content.pug
 		include pages/galery_photos/content.pug
-		include pages/text_only/content.pug
+		include pages/pricing/content.pug
 		include pages/text_product/content.pug

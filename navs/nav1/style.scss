@@ -6,40 +6,46 @@
 
 // REMOVE UPPER PART WHEN DONE PLEASE THANKS
 
+body {
+	padding-top: 50px;
+}
+
 #nav {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 100vw;
 	height: 50px;
 	background-color: #1D1D2C;
 	color: white;
 	line-height: 50px;
 	vertical-align: middle;
-	padding-left: 20px;
-	padding-right: 20px;
 	z-index: 999;
 
 	.logo {
 		font-family: 'Bitter', serif;
-		display: inline-block;
 		font-size: 30px;
 	}
 
 	.menu {
-		float: right;
 		font-family: 'Raleway', Helvetica, sans-serif;
 		list-style-type: none;
-		display: inline-block;
 		font-size: 15px;
 
 		li {
-			display: inline-block;
-			margin-left: 20px;
 			height: 50px;
-			padding-left: 7px;
-			padding-right: 7px;
 			cursor: pointer;
+			text-align: center;
 		}
+	}
+}
+
+@media(max-width:768px) {
+	#nav {
+		height: 100px;
+	}
+
+	body {
+		padding-top: 100px;
 	}
 }

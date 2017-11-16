@@ -1,0 +1,40 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+// REMOVE UPPER PART WHEN DONE PLEASE THANKS
+
+#text_only {
+	position: relative;
+	min-height: 100vh;
+	padding-bottom: 30px;
+	padding-top: 30px;
+
+	h1 {
+		text-transform: uppercase;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.row {
+		padding-bottom: 20px;
+		padding-top: 20px;
+	}
+
+	.price {
+		border: 1px solid #dadada;
+		border-radius: 5px;
+		padding-bottom: 20px;
+		text-align: center;
+	}
+
+	.button {
+		background-color: #19B5FE;
+		color: white;
+		padding: 8px;
+		border-radius: 5px;
+		cursor: pointer
+	}
+}

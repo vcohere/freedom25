@@ -1,11 +1,12 @@
 link(href="https://fonts.googleapis.com/css?family=Bitter|Raleway" rel="stylesheet")
 link(rel="stylesheet" href="/pages/landing/style.min.css")
 
-#landing
-	.bloc
-		h1
-			| #{landing.textTitle}
-		p
-			| #{landing.textSubtitle}
-		.button
-			| #{landing.textButton}
+#landing.container-fluid.page
+	.row
+		.bloc.col-sm-8
+			h2
+				| #{landing.textTitle}
+			p.row
+				| #{landing.textSubtitle}
+				.button.col-sm-4.col-centered
+					| #{landing.textButton}
