@@ -1,12 +1,15 @@
+navigation_choice:nav1
 landing_imageBackground:img/landing/background_blackwhite.jpg
-landing_colorBackground:img/landing/background_blackwhite.jpg
+landing_colorBackground:
 landing_textTitle:Lorem ipsum dolor sit amet
-landing_colorTitle:#000000
+landing_colorTitle:#FFFFFF
 landing_textSubtitle:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat vulputate risus a blandit. Nunc interdum diam viverra consectetur tempor. Donec eros urna, finibus dictum velit ut, porta accumsan tellus. Curabitur non dapibus magna. Aliquam a ante mi. Vivamus aliquet tristique sapien, a pretium erat euismod id. Curabitur fermentum, ante ac scelerisque mattis, ex lacus blandit dui, finibus egestas turpis magna vel eros. Nullam porttitor rhoncus nulla, in vehicula elit egestas at. Donec euismod accumsan bibendum. Proin et lorem sed enim euismod tristique tristique at diam.
 landing_colorSubtitle:#FFFFFF
+landing_bgcolorButton:#2980B9
 landing_textButton:Lorem ipsum
 landing_colorButton:#FFFFFF
-landing_bgcolorButton:#2980B9
+pres_imageBackground:
+pres_colorBackground:
 pres_textTitle:Un grand titre, pour un grand site
 pres_colorTitle:#000000
 pres_textSubtitle1:Une présentation propre
@@ -15,4 +18,4 @@ pres_textSubtitle3:Support continu
 pres_textBody1:Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
 pres_textBody2:Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.
 pres_textBody3:Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.
-navigation_choice:nav1
+pres_colorTextBody:#FFFFFF

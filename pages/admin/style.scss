@@ -57,5 +57,10 @@
 		border-radius: 4px;
 		cursor: pointer;
 		font-weight: 300;
+		transition: background-color 200ms ease-in-out;
+
+		&.success {
+			background-color: #22A7F0;
+		}
 	}
 }

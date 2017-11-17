@@ -24,27 +24,36 @@ app.use('/lib', serveStatic(__dirname + '/lib'))
 app.use('/img', serveStatic(__dirname + '/img'))
 
 app.get('/', (req, res) => {
+	console.log(storage)
   res.render(__dirname + '/index.pug', storage)
 })
 
 app.get('/admin', (req, res) => {
-	console.log(storage);
 	res.render(__dirname + '/pages/admin/admin.pug', {data: storage, keys: Object.keys(storage)})
 })
 
 app.post('/updateContent', (req, res) => {
 	storage = JSON.parse(req.body.data)
+
+	writeData()
+
+	setTimeout(() => {
+		getData()
+	}, 2000)
 })
 
 http.createServer(app).listen(port)
 
-const writeData = (name, content) => {
+const writeData = () => {
 	//
 	let res = ''
-	storage[name] = content
 
-	for (let key in storage) {
-		res += key + ':' + storage[key] + '\n'
+	for (let cat in storage) {
+		let current = storage.cat
+
+		for (let key in storage[cat]) {
+			res += cat + '_' + key + ':' + storage[cat][key] + '\n'
+		}
 	}
 
 	fs.writeFileSync('./data.csv', res)

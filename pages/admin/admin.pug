@@ -16,6 +16,10 @@ html
 			label(for='nav2') Type 2
 		.bloc.landing
 			h1 Landing page
+			h2 Image de fond
+			input(type='hidden' class='landingImageBackground' value=data.landing.imageBackground)
+			h2 Couleur de fond ( Visible si vous ne choisissez pas d'image de fond. )
+			input(type='hidden' class='landingColorBackground' value=data.landing.imageBackground)
 			h2 Texte du titre
 			input(type='text' class='landingTextTitle' value=data.landing.textTitle)
 			h2 Couleur du titre
@@ -38,10 +42,19 @@ html
 			input(type='text' class='presColorTitle' value=data.pres.colorTitle)
 			h2 Sous-titre 1
 			input(type='text' class='presTextSubtitle1' value=data.pres.textSubtitle1)
+			h2 Corps 1
+			textarea(class='presTextBody1')
+				| #{data.pres.textBody1}
 			h2 Sous-titre 2
 			input(type='text' class='presTextSubtitle2' value=data.pres.textSubtitle2)
+			h2 Corps 2
+			textarea(class='presTextBody2')
+				| #{data.pres.textBody2}
 			h2 Sous-titre 3
 			input(type='text' class='presTextSubtitle3' value=data.pres.textSubtitle3)
+			h2 Corps 3
+			textarea(class='presTextBody3')
+				| #{data.pres.textBody3}
 
 		.bloc
 			.validate
