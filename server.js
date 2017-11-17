@@ -5,7 +5,6 @@ const http = require('http'),
     express = require('express'),
 		pug = require('pug'),
     serveStatic = require('serve-static'),
-		csv = require('fast-csv'),
 		bodyParser = require('body-parser'),
 		Promise = require('promise')
 
@@ -44,49 +43,26 @@ http.createServer(app).listen(port)
 
 const writeData = () => {
 	return new Promise((resolve, reject) => {
-		let res = ''
+		let res = JSON.stringify(storage)
 
-		for (let cat in storage) {
-			let current = storage.cat
-
-			for (let key in storage[cat]) {
-				res += cat + '_' + key + ':' + storage[cat][key] + '\n'
-			}
-		}
-
-		fs.writeFile('./data.csv', res, (err) => {
+		fs.writeFile('./db/data.json', res, (err) => {
 			if (err)
 				reject(err)
-			else
+			else {
+				console.log('DB: Data written.')
 				resolve('OK')
+			}
 		})
 	})
 }
 
 const readData = () => {
 	return new Promise((resolve, reject) => {
-		let res = {}
-
-		fs.readFile('./data.csv', 'utf-8', (err, data) => {
+		fs.readFile('./db/data.json', 'utf-8', (err, data) => {
 			if (err)
 				reject(err)
-			else {
-				data = data.split('\n')
-
-				for (i = 0; i < data.length; i++) {
-					if (data[i] === '')
-					continue;
-					let tmp = data[i].split(':'),
-					words = tmp[0].split('_')
-
-					if (!res[words[0]])
-					res[words[0]] = {}
-
-					res[words[0]][words[1]] = tmp[1]
-				}
-
-				resolve(res)
-			}
+			else
+				resolve(JSON.parse(data))
 		})
 	})
 }
@@ -94,11 +70,11 @@ const readData = () => {
 const getData = () => {
 	readData().then((res) => {
 		storage = res
-		console.log('Data is ready.')
+		console.log('DB: Data is ready.')
 	})
 }
 
-fs.watch('data.csv', () => { getData() })
+fs.watch('./db/data.json', () => { getData() })
 
 getData()
-console.log('Started\nhttp://localhost:8080/')
+console.log('WEB: Started at http://localhost:8080/')

@@ -28,7 +28,7 @@ Récupération des données côté front
 - [x] Passage au moteur de template PUG
 - [x] Affichage des données
 - [x] Modification dynamique du texte
-- [ ] Modification dynamique des fonds ( image / couleur unie )
+- [x] Modification dynamique des fonds ( image / couleur unie )
 - [ ] Modification dynamique des couleurs et fonts
 - [x] Modification de la navigation
 
@@ -36,7 +36,9 @@ API côté serveur
 - [x] Intégration des views avec le serveur
 - [x] Stockage en fichier CSV
 - [x] Récupération des données sur fichier CSV
-- [ ] Remplir la galerie photos avec soit des images téléchargées, ou via un Instagram
 - [x] Récupérer les données à chaque changement du fichier CSV
 - [x] Recoder le parser CSV pour ne plus avoir le bug de la virgule
+- [x] Passage aux Promises pour les actions sur le disque
+- [x] Stockage permanent des infos sauvegardées sur le panneau d'administration
+- [ ] Upload d'images
 - [ ] Sécuriser le panneau d'administration
