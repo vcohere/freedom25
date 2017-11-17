@@ -8,7 +8,6 @@ $(document).ready(function() {
 					choice: $('.navigationChoice:checked').val()
 				},
 				landing: {
-					imageBackground: $('.landingImageBackground').val(),
 					colorBackground: $('.landingColorBackground').val(),
 					textTitle: $('.landingTextTitle').val(),
 					colorTitle: $('.landingColorTitle').val(),

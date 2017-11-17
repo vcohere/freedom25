@@ -48,21 +48,38 @@ app.get('/admin', (req, res) => {
 app.post('/updateContent', upload.any(), (req, res) => {
 	storage = req.body.data
 
-	treatUploads(req.files).then((data) => {
-		
+	treatUploads(req.files).then(() => {
+		console.log(storage)
 	})
 
-	writeData().then((data) => {
+	/*writeData().then((data) => {
 		res.sendStatus(200)
 		getData()
-	})
+	})*/
 })
 
 http.createServer(app).listen(port)
 
 const treatUploads = (files) => {
 	return new Promise((resolve, reject) => {
+		for (var i in files) {
+			let tmp = files[i].fieldname.split('-'),
+					ext = files[i].originalname.split('.').slice(-1)[0]
+			let path = files[i].destination + '/' + tmp[0] + '/' + tmp[1] + '.' + ext
 
+			fs.rename(files[i].path, path, (err) => {
+				if (err)
+					reject(err)
+
+				console.log(tmp[0], tmp[1])
+				storage[tmp[0]][tmp[1]] = path
+				console.log(storage[tmp[0]])
+				console.log(storage[tmp[0]][tmp[1]])
+			})
+		}
+
+		// La promise se resolve avant la fin du for ! Mais ca marche sinon.
+		resolve(true)
 	})
 }
 
