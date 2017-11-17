@@ -1,7 +1,7 @@
 landing_imageBackground:img/landing/background_blackwhite.jpg
 landing_colorBackground:img/landing/background_blackwhite.jpg
 landing_textTitle:Lorem ipsum dolor sit amet
-landing_colorTitle:#000000
+landing_colorTitle:#FFFFFF
 landing_textSubtitle:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat vulputate risus a blandit. Nunc interdum diam viverra consectetur tempor. Donec eros urna, finibus dictum velit ut, porta accumsan tellus. Curabitur non dapibus magna. Aliquam a ante mi. Vivamus aliquet tristique sapien, a pretium erat euismod id. Curabitur fermentum, ante ac scelerisque mattis, ex lacus blandit dui, finibus egestas turpis magna vel eros. Nullam porttitor rhoncus nulla, in vehicula elit egestas at. Donec euismod accumsan bibendum. Proin et lorem sed enim euismod tristique tristique at diam.
 landing_colorSubtitle:#FFFFFF
 landing_textButton:Lorem ipsum

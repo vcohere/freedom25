@@ -24,7 +24,6 @@ app.use('/lib', serveStatic(__dirname + '/lib'))
 app.use('/img', serveStatic(__dirname + '/img'))
 
 app.get('/', (req, res) => {
-	console.log(storage)
   res.render(__dirname + '/index.pug', storage)
 })
 
@@ -35,58 +34,65 @@ app.get('/admin', (req, res) => {
 app.post('/updateContent', (req, res) => {
 	storage = JSON.parse(req.body.data)
 
-	writeData()
-
-	setTimeout(() => {
+	writeData().then((data) => {
+		res.sendStatus(200)
 		getData()
-	}, 2000)
+	})
 })
 
 http.createServer(app).listen(port)
 
 const writeData = () => {
-	//
-	let res = ''
+	return new Promise((resolve, reject) => {
+		let res = ''
 
-	for (let cat in storage) {
-		let current = storage.cat
+		for (let cat in storage) {
+			let current = storage.cat
 
-		for (let key in storage[cat]) {
-			res += cat + '_' + key + ':' + storage[cat][key] + '\n'
+			for (let key in storage[cat]) {
+				res += cat + '_' + key + ':' + storage[cat][key] + '\n'
+			}
 		}
-	}
 
-	fs.writeFileSync('./data.csv', res)
+		fs.writeFile('./data.csv', res, (err) => {
+			if (err)
+				reject(err)
+			else
+				resolve('OK')
+		})
+	})
 }
 
-const readData = new Promise((resolve, reject) => {
-	let res = {}
-
+const readData = () => {
+	return new Promise((resolve, reject) => {
+		let res = {}
 
 		fs.readFile('./data.csv', 'utf-8', (err, data) => {
 			if (err)
 				reject(err)
+			else {
+				data = data.split('\n')
 
-			data = data.split('\n')
-
-			for (i = 0; i < data.length; i++) {
-				if (data[i] === '')
+				for (i = 0; i < data.length; i++) {
+					if (data[i] === '')
 					continue;
-				let tmp = data[i].split(':'),
-						words = tmp[0].split('_')
+					let tmp = data[i].split(':'),
+					words = tmp[0].split('_')
 
-				if (!res[words[0]])
+					if (!res[words[0]])
 					res[words[0]] = {}
 
-				res[words[0]][words[1]] = tmp[1]
-			}
+					res[words[0]][words[1]] = tmp[1]
+				}
 
-			resolve(res)
+				resolve(res)
+			}
 		})
-})
+	})
+}
 
 const getData = () => {
-	readData.then((res) => {
+	readData().then((res) => {
 		storage = res
 		console.log('Data is ready.')
 	})
