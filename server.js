@@ -6,10 +6,25 @@ const http = require('http'),
 		pug = require('pug'),
     serveStatic = require('serve-static'),
 		bodyParser = require('body-parser'),
+		multer = require('multer'),
 		Promise = require('promise')
 
 const port = 8080,
 		app = express()
+
+var storageMulter = multer.diskStorage({
+    destination: function(req, file, callback){
+        callback(null, './img'); // set the destination
+    },
+    filename: function(req, file, callback){
+        callback(null, Date.now() + '.jpg'); // set the file name and extension
+    }
+})
+
+
+const upload = multer({
+	storage: storageMulter
+})
 
 var storage = null
 
@@ -30,8 +45,12 @@ app.get('/admin', (req, res) => {
 	res.render(__dirname + '/pages/admin/admin.pug', {data: storage, keys: Object.keys(storage)})
 })
 
-app.post('/updateContent', (req, res) => {
-	storage = JSON.parse(req.body.data)
+app.post('/updateContent', upload.any(), (req, res) => {
+	storage = req.body.data
+
+	treatUploads(req.files).then((data) => {
+		
+	})
 
 	writeData().then((data) => {
 		res.sendStatus(200)
@@ -40,6 +59,12 @@ app.post('/updateContent', (req, res) => {
 })
 
 http.createServer(app).listen(port)
+
+const treatUploads = (files) => {
+	return new Promise((resolve, reject) => {
+
+	})
+}
 
 const writeData = () => {
 	return new Promise((resolve, reject) => {

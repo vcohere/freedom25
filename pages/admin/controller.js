@@ -1,36 +1,44 @@
 $(document).ready(function() {
-	$('.validate').on('click', function() {
-		var res = new Object();
-		res.landing = new Object();
-		res.pres = new Object();
-		res.navigation = new Object();
+	$('#form').submit(function(e) {
+		e.preventDefault();
 
-		res.navigation.choice = $('.navigationChoice:checked').val();
-
-		res.landing.imageBackground = $('.landingImageBackground').val();
-		res.landing.colorBackground = $('.landingColorBackground').val();
-		res.landing.textTitle = $('.landingTextTitle').val();
-		res.landing.colorTitle = $('.landingColorTitle').val();
-		res.landing.textSubtitle = $('.landingTextSubtitle').val();
-		res.landing.colorSubtitle = $('.landingColorSubtitle').val();
-		res.landing.textButton = $('.landingTextButton').val();
-		res.landing.colorButton = $('.landingColorButton').val();
-		res.landing.bgcolorButton = $('.landingBgcolorButton').val();
-
-		res.pres.textTitle = $('.presTextTitle').val();
-		res.pres.colorTitle = $('.presColorTitle').val();
-		res.pres.textSubtitle1 = $('.presTextSubtitle1').val();
-		res.pres.textSubtitle2 = $('.presTextSubtitle2').val();
-		res.pres.textSubtitle3 = $('.presTextSubtitle3').val();
-		res.pres.textBody1 = $('.presTextBody1').val();
-		res.pres.textBody2 = $('.presTextBody2').val();
-		res.pres.textBody3 = $('.presTextBody3').val();
-
-		$.post('/updateContent',
-			{ data: JSON.stringify(res) },
-			function() {
-				$('.validate').addClass('success');
+		var data = {
+			data: {
+				navigation: {
+					choice: $('.navigationChoice:checked').val()
+				},
+				landing: {
+					imageBackground: $('.landingImageBackground').val(),
+					colorBackground: $('.landingColorBackground').val(),
+					textTitle: $('.landingTextTitle').val(),
+					colorTitle: $('.landingColorTitle').val(),
+					textSubtitle: $('.landingTextSubtitle').val(),
+					colorSubtitle: $('.landingColorSubtitle').val(),
+					textButton: $('.landingTextButton').val(),
+					colorButton: $('.landingColorButton').val(),
+					bgcolorButton: $('.landingBgcolorButton').val()
+				},
+				pres: {
+					textTitle: $('.presTextTitle').val(),
+					colorTitle: $('.presColorTitle').val(),
+					textSubtitle1: $('.presTextSubtitle1').val(),
+					textSubtitle2: $('.presTextSubtitle2').val(),
+					textSubtitle3: $('.presTextSubtitle3').val(),
+					textBody1: $('.presTextBody1').val(),
+					textBody2: $('.presTextBody2').val(),
+					textBody3: $('.presTextBody3').val()
+				}
 			}
-		);
+		};
+
+		$(this).ajaxSubmit({
+    	data: data,
+    	contentType: 'application/json',
+    	success: function(response){
+    		console.log('image uploaded and form submitted');
+    	}
+		});
+
+  	return false;
 	});
 });

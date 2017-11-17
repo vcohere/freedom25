@@ -5,57 +5,56 @@ html
 		link(href="https://fonts.googleapis.com/css?family=Bitter|Raleway" rel="stylesheet")
 		link(rel="stylesheet" href="/pages/admin/style.min.css")
 		script(src='/pages/admin/jquery-3.2.1.min.js')
+		script(src='http://malsup.github.com/jquery.form.js')
 		script(src='/pages/admin/controller.js')
 	body
-		.bloc.nav
-			h1 Navigation
-			h2 Disposition du menu
-			input(type='radio' name='nav' value='nav1' id='nav1' class='navigationChoice' checked=(data.navigation.choice == 'nav1'))
-			label(for='nav1') Type 1
-			input(type='radio' name='nav' value='nav2' id='nav2' class='navigationChoice' checked=(data.navigation.choice == 'nav2'))
-			label(for='nav2') Type 2
-		.bloc.landing
-			h1 Landing page
-			h2 Image de fond
-			input(type='hidden' class='landingImageBackground' value=data.landing.imageBackground)
-			h2 Couleur de fond ( Visible si vous ne choisissez pas d'image de fond. )
-			input(type='hidden' class='landingColorBackground' value=data.landing.colorBackground)
-			h2 Texte du titre
-			input(type='text' class='landingTextTitle' value=data.landing.textTitle)
-			h2 Couleur du titre
-			input(type='text' class='landingColorTitle' value=data.landing.colorTitle)
-			h2 Texte du sous-titre
-			textarea(class='landingTextSubtitle') #{data.landing.textSubtitle}
-			h2 Couleur du sous-titre
-			input(type='text' class='landingColorSubtitle' value=data.landing.colorSubtitle)
-			h2 Texte du bouton
-			input(type='text' class='landingTextButton' value=data.landing.textButton)
-			h2 Couleur de fond du bouton
-			input(type='text' class='landingBgcolorButton' value=data.landing.bgcolorButton)
-			h2 Couleur du texte du bouton
-			input(type='text' class='landingColorButton' value=data.landing.colorButton)
-		.bloc.pres
-			h1 Page de présentation
-			h2 Titre
-			input(type='text' class='presTextTitle' value=data.pres.textTitle)
-			h2 Couleur du titre
-			input(type='text' class='presColorTitle' value=data.pres.colorTitle)
-			h2 Sous-titre 1
-			input(type='text' class='presTextSubtitle1' value=data.pres.textSubtitle1)
-			h2 Corps 1
-			textarea(class='presTextBody1')
-				| #{data.pres.textBody1}
-			h2 Sous-titre 2
-			input(type='text' class='presTextSubtitle2' value=data.pres.textSubtitle2)
-			h2 Corps 2
-			textarea(class='presTextBody2')
-				| #{data.pres.textBody2}
-			h2 Sous-titre 3
-			input(type='text' class='presTextSubtitle3' value=data.pres.textSubtitle3)
-			h2 Corps 3
-			textarea(class='presTextBody3')
-				| #{data.pres.textBody3}
+		form(enctype='multipart/form-data' method='post' id='form' action='/updateContent')
+			.bloc.nav
+				h1 Navigation
+				h2 Disposition du menu
+				input(type='radio' name='nav' value='nav1' id='nav1' class='navigationChoice' checked=(data.navigation.choice == 'nav1'))
+				label(for='nav1') Type 1
+				input(type='radio' name='nav' value='nav2' id='nav2' class='navigationChoice' checked=(data.navigation.choice == 'nav2'))
+				label(for='nav2') Type 2
+			.bloc.landing
+				h1 Landing page
+				h2 Image de fond
+				input(type='file' class='landingImageBackgroundTest', value=data.landing.imageBackground, name='landingImageBackgroundTest')
+				input(type='hidden' class='landingImageBackground' value=data.landing.imageBackground, name='landingImageBackground')
+				h2 Couleur de fond ( Visible si vous ne choisissez pas d'image de fond. )
+				input(type='hidden' class='landingColorBackground' value=data.landing.colorBackground, name='landingColorBackground')
+				h2 Texte du titre
+				input(type='text' class='landingTextTitle' value=data.landing.textTitle, name='landingTextTitle')
+				h2 Couleur du titre
+				input(type='text' class='landingColorTitle' value=data.landing.colorTitle, name='landingColorTitle')
+				h2 Texte du sous-titre
+				textarea(class='landingTextSubtitle', name='landingTextSubtitle') #{data.landing.textSubtitle}
+				h2 Couleur du sous-titre
+				input(type='text' class='landingColorSubtitle' value=data.landing.colorSubtitle, name='landingColorSubtitle')
+				h2 Texte du bouton
+				input(type='text' class='landingTextButton' value=data.landing.textButton, name='landingTextButton')
+				h2 Couleur de fond du bouton
+				input(type='text' class='landingBgcolorButton' value=data.landing.bgcolorButton, name='landingBgcolorButton')
+				h2 Couleur du texte du bouton
+				input(type='text' class='landingColorButton' value=data.landing.colorButton, name='landingColorButton')
+			.bloc.pres
+				h1 Page de présentation
+				h2 Titre
+				input(type='text' class='presTextTitle' value=data.pres.textTitle, name='presTextTitle')
+				h2 Couleur du titre
+				input(type='text' class='presColorTitle' value=data.pres.colorTitle, name='presColorTitle')
+				h2 Sous-titre 1
+				input(type='text' class='presTextSubtitle1' value=data.pres.textSubtitle1, name='presTextSubtitle1')
+				h2 Corps 1
+				textarea(class='presTextBody1', name='presTextBody1') #{data.pres.textBody1}
+				h2 Sous-titre 2
+				input(type='text' class='presTextSubtitle2' value=data.pres.textSubtitle2, name='presTextSubtitle2')
+				h2 Corps 2
+				textarea(class='presTextBody2', name='presTextBody2') #{data.pres.textBody2}
+				h2 Sous-titre 3
+				input(type='text' class='presTextSubtitle3' value=data.pres.textSubtitle3, name='presTextSubtitle3')
+				h2 Corps 3
+				textarea(class='presTextBody3', name='presTextBody1') #{data.pres.textBody3}
 
-		.bloc
-			.validate
-				| Valider les changements
+			.bloc
+				input(type='submit').validate
