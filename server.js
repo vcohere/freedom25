@@ -50,19 +50,21 @@ app.post('/updateContent', upload.any(), (req, res) => {
 
 	treatUploads(req.files).then(() => {
 		console.log(storage)
-	})
 
-	/*writeData().then((data) => {
-		res.sendStatus(200)
-		getData()
-	})*/
+		writeData().then((data) => {
+			res.sendStatus(200)
+			getData()
+		})
+	})
 })
 
 http.createServer(app).listen(port)
 
 const treatUploads = (files) => {
 	return new Promise((resolve, reject) => {
-		for (var i in files) {
+		var count = 0;
+
+		for (var i = 0; i < files.length; i++) {
 			let tmp = files[i].fieldname.split('-'),
 					ext = files[i].originalname.split('.').slice(-1)[0]
 			let path = files[i].destination + '/' + tmp[0] + '/' + tmp[1] + '.' + ext
@@ -71,15 +73,12 @@ const treatUploads = (files) => {
 				if (err)
 					reject(err)
 
-				console.log(tmp[0], tmp[1])
 				storage[tmp[0]][tmp[1]] = path
-				console.log(storage[tmp[0]])
-				console.log(storage[tmp[0]][tmp[1]])
+				count++
+				if (count === files.length)
+					resolve(true)
 			})
 		}
-
-		// La promise se resolve avant la fin du for ! Mais ca marche sinon.
-		resolve(true)
 	})
 }
 
@@ -112,6 +111,8 @@ const readData = () => {
 const getData = () => {
 	readData().then((res) => {
 		storage = res
+		console.log('\n\n\n\n')
+		console.log(res)
 		console.log('DB: Data is ready.')
 	})
 }
