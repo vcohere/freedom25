@@ -22,15 +22,16 @@ html
 						h2 #{h2}
 						.collapsable
 							each val in tab
-								h3 #{val.name}
-								if val.type === 'radio'
-									each value in val.options
-										input(type='radio' value=value data-id=h1 + h2 + val.name name=removeSpaces(h1 + h2 + val.name))
-										label(for=removeSpaces(h1 + h2 + val.name)) #{value}
-								else if val.type === 'textarea'
-									textarea(data-id=h1 + h2 + val.name) #{val.value}
-								else
-									input(type=val.type value=val.value data-id=h1 + h2 + val.name)
+								if (val.name != "data")
+									h3 #{val.name}
+									if val.type === 'radio'
+										each value in val.options
+											input(type='radio' value=value data-id=h1 + h2 + val.name name=removeSpaces(h1 + h2 + val.name))
+											label(for=removeSpaces(h1 + h2 + val.name)) #{value}
+									else if val.type === 'textarea'
+										textarea(data-id=h1 + h2 + val.name) #{val.value}
+									else
+										input(type=val.type value=val.value data-id=h1 + h2 + val.name)
 			.bloc
 				.load-wrap
 					.load

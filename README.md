@@ -11,9 +11,12 @@ Ricky
 - [ ] Page de contact
 - [ ] Footer
 - [ ] Menu burger en mode Mobile
+- [x] Vraies pages dans le menu
 - [ ] Passer le panneau d'admin en bootstrap
 - [ ] Interface pour choisir les pages qu'on veut et leur ordre
+- [ ] Relier toutes les vues à la db
 - [ ] Choix multi-page / full-page
+- [x] Inclusion des pages intelligentes avec la db
 - [ ] Option pour prévisualiser le site avec les nouveaux changements
 - [x] Bouton pour revenir au site depuis le back-office
 - [ ] Modification des fonts depuis le back-office
@@ -27,7 +30,7 @@ Ricky
 - [ ] Passer en architecture Docker
 - [ ] Faire un environnement de dev et un de prod ( Plus tard plusieurs prod esclaves )
 - [ ] Automatiser les build et minification avec Gulp
-- [ ] Automatiser le back-up de la bdd
+- [x] Automatiser le back-up de la bdd
 
 Futur:
 - [ ] Passer à un vrai système de bdd

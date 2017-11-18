@@ -38,11 +38,12 @@ app.use('/pages', serveStatic(__dirname + '/pages'))
 app.use('/navs', serveStatic(__dirname + '/navs'))
 app.use('/lib', serveStatic(__dirname + '/lib'))
 app.use('/img', serveStatic(__dirname + '/img'))
+app.use('/js', serveStatic(__dirname + '/js'))
 
 app.all('/*', morgan('tiny'))
 
 app.get('/', (req, res) => {
-  res.render(__dirname + '/index.pug', {ge: getElement})
+  res.render(__dirname + '/index.pug', {ge: getElement, gp: getPages, gf: getFolder, isInPages: isInPages})
 })
 
 app.get('/admin', (req, res) => {
@@ -68,6 +69,35 @@ http.createServer(app).listen(port)
 
 const removeSpaces = (str) => {
 	return str.replace(/\s/g, '')
+}
+
+const getFolder = (name) => {
+	for (var i in storage) {
+		if (name === i)
+			return storage[i].data.folder
+	}
+
+	return null
+}
+
+const getPages = () => {
+	let res = []
+
+	for (var i in storage) {
+		if (i !== 'Navigation')
+			res.push(i)
+	}
+
+	return res
+}
+
+const isInPages = (page) => {
+	for (var i in storage) {
+		if (page === i)
+			return true;
+	}
+
+	return false;
 }
 
 const getElement = (name) => {

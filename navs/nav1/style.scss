@@ -10,14 +10,14 @@ body {
 	padding-top: 50px;
 }
 
-#nav {
+#nav1 {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100vw;
 	height: 50px;
 	background-color: #1D1D2C;
-	color: white;
+	color: #fafafa;
 	line-height: 50px;
 	vertical-align: middle;
 	z-index: 999;
@@ -40,6 +40,10 @@ body {
 			height: 50px;
 			cursor: pointer;
 			text-align: center;
+			float: right;
+			padding: 0;
+			margin-left: 15px;
+			margin-right: 15px;
 		}
 	}
 }
