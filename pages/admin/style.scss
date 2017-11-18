@@ -12,15 +12,75 @@
 	font-size: 16px;
 	color: #424242;
 
+	h2:after {
+		content: '+';
+		position: absolute;
+		top: 50%;
+		right: 20px;
+		transform: translateY(-50%);
+	}
+
+	h2.active:after {
+		content: '-';
+	}
+
+	h2:hover {
+		background-color: #fafafa;
+	}
+
+	.collapsable {
+		height: 0;
+		overflow: hidden;
+	}
+
+	.collapsable.active {
+		height: auto;
+		padding: 0px 20px;
+	}
+
+	.load-wrap {
+		width: 80px;
+		margin: auto;
+
+		.load {
+			text-align: center;
+			opacity: 0;
+
+			&.active {
+				opacity: 1;
+			}
+
+			.square {
+				width: 12px;
+				height: 12px;
+				border-radius: 4px;
+				background-color: #424242;
+				animation: loadingG 1.5s cubic-bezier(.17,.37,.43,.67) infinite;
+			}
+		}
+
+		@keyframes loadingG {
+			0% {transform: translate(0,0) rotate(0deg);}
+			50% {transform: translate(70px,0) rotate(360deg);}
+			100% {transform: translate(0,0) rotate(0deg);}
+		}
+	}
+
+
 	h1 {
 		font-family: 'Bitter', serif;
 		margin-bottom: 20px;
 	}
 
 	h2 {
+		position: relative;
 		font-size: 20px;
-		margin-top: 20px;
-		margin-bottom: 10px;
+		padding: 30px 20px;
+		cursor: pointer;
+	}
+
+	h3 {
+		padding: 20px;
 	}
 
 	input, textarea {
@@ -58,6 +118,10 @@
 		cursor: pointer;
 		font-weight: 300;
 		transition: background-color 200ms ease-in-out;
+
+		&:focus {
+			outline: none;
+		}
 
 		&.success {
 			background-color: #22A7F0;

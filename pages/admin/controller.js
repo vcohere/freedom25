@@ -1,6 +1,13 @@
 $(document).ready(function() {
+	$('h2').on('click', function() {
+		$(this).next('.collapsable').toggleClass('active');
+		$(this).toggleClass('active');
+	});
+
 	$('#form').submit(function(e) {
 		e.preventDefault();
+
+		$('.load').addClass('active');
 
 		var data = {
 			data: {
@@ -34,7 +41,8 @@ $(document).ready(function() {
     	data: data,
     	contentType: 'application/json',
     	success: function(response){
-    		console.log('image uploaded and form submitted');
+				$('.load').addClass('active');
+				$('.validate').addClass('success');
     	}
 		});
 

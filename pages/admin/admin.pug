@@ -6,54 +6,89 @@ html
 		link(rel="stylesheet" href="/pages/admin/style.min.css")
 		script(src='/pages/admin/jquery-3.2.1.min.js')
 		script(src='http://malsup.github.com/jquery.form.js')
+		script.
+			old=!{JSON.stringify(data)};
 		script(src='/pages/admin/controller.js')
 	body
 		form(enctype='multipart/form-data' method='post' id='form' action='/updateContent')
 			.bloc.nav
 				h1 Navigation
-				h2 Disposition du menu
-				input(type='radio' name='nav' value='nav1' id='nav1' class='navigationChoice' checked=(data.navigation.choice == 'nav1'))
-				label(for='nav1') Type 1
-				input(type='radio' name='nav' value='nav2' id='nav2' class='navigationChoice' checked=(data.navigation.choice == 'nav2'))
-				label(for='nav2') Type 2
+				.collapsable.active
+					input(type='radio' name='nav' value='nav1' id='nav1' class='navigationChoice' checked=(data.navigation.choice == 'nav1'))
+					label(for='nav1') Type 1
+					input(type='radio' name='nav' value='nav2' id='nav2' class='navigationChoice' checked=(data.navigation.choice == 'nav2'))
+					label(for='nav2') Type 2
+
 			.bloc.landing
 				h1 Landing page
-				h2 Image de fond
-				input(type='file' class='landing-imageBackground', value=data.landing.imageBackground, name='landing-imageBackground')
-				h2 Couleur de fond ( Visible si vous ne choisissez pas d'image de fond. )
-				input(type='hidden' class='landingColorBackground' value=data.landing.colorBackground, name='landingColorBackground')
-				h2 Texte du titre
-				input(type='text' class='landingTextTitle' value=data.landing.textTitle, name='landingTextTitle')
-				h2 Couleur du titre
-				input(type='text' class='landingColorTitle' value=data.landing.colorTitle, name='landingColorTitle')
-				h2 Texte du sous-titre
-				textarea(class='landingTextSubtitle', name='landingTextSubtitle') #{data.landing.textSubtitle}
-				h2 Couleur du sous-titre
-				input(type='text' class='landingColorSubtitle' value=data.landing.colorSubtitle, name='landingColorSubtitle')
-				h2 Texte du bouton
-				input(type='text' class='landingTextButton' value=data.landing.textButton, name='landingTextButton')
-				h2 Couleur de fond du bouton
-				input(type='text' class='landingBgcolorButton' value=data.landing.bgcolorButton, name='landingBgcolorButton')
-				h2 Couleur du texte du bouton
-				input(type='text' class='landingColorButton' value=data.landing.colorButton, name='landingColorButton')
+				h2 Background
+				.collapsable
+					h3 Image
+					input(type='file' class='landing-imageBackground', value=data.landing.imageBackground, name='landing-imageBackground')
+					h3 Couleur ( Visible si vous ne choisissez pas d'image )
+					input(type='text' class='landingColorBackground' value=data.landing.colorBackground, name='landingColorBackground')
+				
+				h2 Titre
+				.collapsable
+					h3 Texte
+					input(type='text' class='landingTextTitle' value=data.landing.textTitle, name='landingTextTitle')
+					h3 Couleur du texte
+					input(type='text' class='landingColorTitle' value=data.landing.colorTitle, name='landingColorTitle')
+				
+				h2 Sous-titre
+				.collapsable
+					h3 Texte
+					textarea(class='landingTextSubtitle', name='landingTextSubtitle') #{data.landing.textSubtitle}
+					h3 Couleur du texte
+					input(type='text' class='landingColorSubtitle' value=data.landing.colorSubtitle, name='landingColorSubtitle')
+				
+				h2 Bouton
+				.collapsable
+					h3 Texte
+					input(type='text' class='landingTextButton' value=data.landing.textButton, name='landingTextButton')
+					h3 Couleur de fond
+					input(type='text' class='landingBgcolorButton' value=data.landing.bgcolorButton, name='landingBgcolorButton')
+					h3 Couleur du texte
+					input(type='text' class='landingColorButton' value=data.landing.colorButton, name='landingColorButton')
+			
 			.bloc.pres
 				h1 Page de présentation
 				h2 Titre
-				input(type='text' class='presTextTitle' value=data.pres.textTitle, name='presTextTitle')
-				h2 Couleur du titre
-				input(type='text' class='presColorTitle' value=data.pres.colorTitle, name='presColorTitle')
-				h2 Sous-titre 1
-				input(type='text' class='presTextSubtitle1' value=data.pres.textSubtitle1, name='presTextSubtitle1')
-				h2 Corps 1
-				textarea(class='presTextBody1', name='presTextBody1') #{data.pres.textBody1}
-				h2 Sous-titre 2
-				input(type='text' class='presTextSubtitle2' value=data.pres.textSubtitle2, name='presTextSubtitle2')
-				h2 Corps 2
-				textarea(class='presTextBody2', name='presTextBody2') #{data.pres.textBody2}
-				h2 Sous-titre 3
-				input(type='text' class='presTextSubtitle3' value=data.pres.textSubtitle3, name='presTextSubtitle3')
-				h2 Corps 3
-				textarea(class='presTextBody3', name='presTextBody1') #{data.pres.textBody3}
+				.collapsable
+					h3 Texte
+					input(type='text' class='presTextTitle' value=data.pres.textTitle, name='presTextTitle')
+					h3 Couleur du texte
+					input(type='text' class='presColorTitle' value=data.pres.colorTitle, name='presColorTitle')
+
+				h2 Premier bloc
+				.collapsable
+					h3 Image
+					input(type='file' class='pres-imageBody1', value=data.pres.imageBody1, name='pres-imageBody1')
+					h3 Sous-titre
+					input(type='text' class='presTextSubtitle1' value=data.pres.textSubtitle1, name='presTextSubtitle1')
+					h3 Corps
+					textarea(class='presTextBody1', name='presTextBody1') #{data.pres.textBody1}
+
+				h2 Second bloc
+				.collapsable
+					h3 Image
+					input(type='file' class='pres-imageBody2', value=data.pres.imageBody1, name='pres-imageBody2')
+					h3 Sous-titre
+					input(type='text' class='presTextSubtitle2' value=data.pres.textSubtitle2, name='presTextSubtitle2')
+					h3 Corps
+					textarea(class='presTextBody2', name='presTextBody2') #{data.pres.textBody2}
+
+				h2 Troisième bloc
+				.collapsable
+					h3 Image
+					input(type='file' class='pres-imageBody3', value=data.pres.imageBody1, name='pres-imageBody3')
+					h3 Sous-titre
+					input(type='text' class='presTextSubtitle3' value=data.pres.textSubtitle3, name='presTextSubtitle3')
+					h3 Corps
+					textarea(class='presTextBody3', name='presTextBody1') #{data.pres.textBody3}
 
 			.bloc
 				input(type='submit').validate
+				.load-wrap
+					.load
+						.square

@@ -6,6 +6,7 @@ const http = require('http'),
 		pug = require('pug'),
     serveStatic = require('serve-static'),
 		bodyParser = require('body-parser'),
+		loki = require('lokijs'),
 		multer = require('multer'),
 		Promise = require('promise')
 
@@ -42,7 +43,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
-	res.render(__dirname + '/pages/admin/admin.pug', {data: storage, keys: Object.keys(storage)})
+	res.render(__dirname + '/pages/admin/admin.pug', {data: storage})
 })
 
 app.post('/updateContent', upload.any(), (req, res) => {
@@ -51,10 +52,11 @@ app.post('/updateContent', upload.any(), (req, res) => {
 	treatUploads(req.files).then(() => {
 		console.log(storage)
 
+		/*
 		writeData().then((data) => {
 			res.sendStatus(200)
 			getData()
-		})
+		})*/
 	})
 })
 
