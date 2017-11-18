@@ -17,6 +17,15 @@ html
 		form(enctype='multipart/form-data' method='post' id='form' action='/updateContent')
 			each cat, h1 in data
 				.bloc
+					h1 Général
+					h2 Type de site
+					.collapsable
+						input(type='radio' name='multi' value='multi')
+						label(for='multi') Multi-pages
+						input(type='radio' name='multi' value='full')
+						label(for='multi') Une seule page
+
+				.bloc
 					h1 #{h1}
 					each tab, h2 in cat
 						h2 #{h2}
