@@ -10,12 +10,6 @@ html
 			old=!{JSON.stringify(data)};
 		script(src='/pages/admin/controller.js')
 	body
-		// Creer un machin PUG a Include pour les Input type Image, pour un upload propre et une preview.
-		// Pareil pour les radios.
-		// Il faut faire une fonction qui transform le "h1 + h2 + val.name" pour l'envoyer dans le formulaire.
-		// Il faut trouver un moyen d'acceder aux datas en front, foutus tableaux.
-		// Bref, il y a du travail. Bonne nuit !
-
 		form(enctype='multipart/form-data' method='post' id='form' action='/updateContent')
 			each cat, h1 in data
 				.bloc

@@ -4,41 +4,13 @@ Il s'agit d'un framework dans le but de faciliter la vente de sites web.
 
 ## Todo
 
-Différentes views
-- [x] Landing page
-- [x] Texte avec un produit
-- [x] Présentation 3 offres
-- [x] Pricing d'une offre
-- [ ] Galerie produits
 - [ ] Menu de restaurant
 - [ ] Page de contact
 - [ ] Footer
-- [x] Panneau d'administration
-
-Multiples types de navigation
-- [x] Logo a gauche, menu a droite
-- [x] Logo centré, menu en dessous
-- [x] Intégrer la navigation au site
-
-2 différents types de layout
-- [x] Onepage
-- [ ] Multi-pages
-
-Récupération des données côté front
-- [x] Passage au moteur de template PUG
-- [x] Affichage des données
-- [x] Modification dynamique du texte
-- [x] Modification dynamique des fonds ( image / couleur unie )
-- [ ] Modification dynamique des couleurs et fonts
-- [x] Modification de la navigation
-
-API côté serveur
-- [x] Intégration des views avec le serveur
-- [x] Stockage en fichier CSV
-- [x] Récupération des données sur fichier CSV
-- [x] Récupérer les données à chaque changement du fichier CSV
-- [x] Recoder le parser CSV pour ne plus avoir le bug de la virgule
-- [x] Passage aux Promises pour les actions sur le disque
-- [x] Stockage permanent des infos sauvegardées sur le panneau d'administration
-- [ ] Upload d'images
+- [ ] Choix multi-page / full-page
+- [ ] Modification des fonts depuis le back-office
 - [ ] Sécuriser le panneau d'administration
+- [ ] Upload des images sans valider le formulaire depuis le back-office avec une route dédiée
+- [ ] Vérification du type de fichier uploadé, et sa taille
+- [ ] Supprimer l'ancienne photo uploadée
+- [ ] Créer des mixin Pug pour le panneau d'admin ( input file, input radio, select... )
