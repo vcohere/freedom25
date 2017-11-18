@@ -77,7 +77,7 @@
       {
         "name": "Image",
         "type": "text",
-        "value": "./img/landing/imageBackground.jpg"
+        "value": "./static/img/landing/imageBackground.jpg"
       }
     ],
     "Titre": [

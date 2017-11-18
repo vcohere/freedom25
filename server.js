@@ -36,9 +36,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/pages', serveStatic(__dirname + '/pages'))
 app.use('/navs', serveStatic(__dirname + '/navs'))
-app.use('/lib', serveStatic(__dirname + '/lib'))
-app.use('/img', serveStatic(__dirname + '/img'))
-app.use('/js', serveStatic(__dirname + '/js'))
+app.use('/static', serveStatic(__dirname + '/static'))
 
 app.all('/*', morgan('tiny'))
 

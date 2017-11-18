@@ -16,7 +16,7 @@ Ricky
 - [ ] Page de contact
 - [ ] Footer
 - [ ] Menu burger en mode Mobile
-- [ ] Rassembler les assets static dans un dossier
+- [x] Rassembler les assets static dans un dossier
 - [ ] Passer le panneau d'admin en bootstrap
 - [ ] Interface pour choisir les pages qu'on veut et leur ordre
 - [ ] Relier toutes les vues à la db
