@@ -11,11 +11,11 @@ Ricky
 - [ ] Page de contact
 - [ ] Footer
 - [ ] Menu burger en mode Mobile
-
+- [ ] Passer le panneau d'admin en bootstrap
 - [ ] Interface pour choisir les pages qu'on veut et leur ordre
 - [ ] Choix multi-page / full-page
 - [ ] Option pour prévisualiser le site avec les nouveaux changements
-- [ ] Bouton pour revenir au site depuis le back-office
+- [x] Bouton pour revenir au site depuis le back-office
 - [ ] Modification des fonts depuis le back-office
 - [ ] Sécuriser le panneau d'administration
 - [ ] Infobulles pour expliquer les champs du back-office
