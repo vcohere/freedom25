@@ -4,9 +4,9 @@ html
 		title Freedom35
 		link(href='lib/bootstrap/css/bootstrap.css' rel='stylesheet')
 	body
-		if (ge('Menu.Disposition.Choix') == 'nav1')
+		if (ge('Navigation.Disposition.Choix') == 'nav1')
 			include navs/nav1/content.pug
-		if (ge('Menu.Disposition.Choix') == 'nav2')
+		if (ge('Navigation.Disposition.Choix') == 'nav2')
 			include navs/nav2/content.pug
 
 		include pages/landing/content.pug

@@ -8,6 +8,7 @@ const http = require('http'),
 		bodyParser = require('body-parser'),
 		loki = require('lokijs'),
 		multer = require('multer'),
+		morgan = require('morgan'),
 		Promise = require('promise')
 
 const port = 8080,
@@ -38,32 +39,42 @@ app.use('/navs', serveStatic(__dirname + '/navs'))
 app.use('/lib', serveStatic(__dirname + '/lib'))
 app.use('/img', serveStatic(__dirname + '/img'))
 
+app.all('/*', morgan('tiny'))
+
 app.get('/', (req, res) => {
   res.render(__dirname + '/index.pug', {ge: getElement})
 })
 
 app.get('/admin', (req, res) => {
-	res.render(__dirname + '/pages/admin/admin.pug', {data: storage})
+	res.render(__dirname + '/pages/admin/admin.pug', {data: storage, removeSpaces: removeSpaces})
 })
 
 app.post('/updateContent', upload.any(), (req, res) => {
 	storage = req.body.data
 
-	treatUploads(req.files).then(() => {
-
-		/*
-		writeData().then((data) => {
-			res.sendStatus(200)
-			getData()
-		})*/
+	writeData().then((data) => {
+		res.sendStatus(200)
+		getData()
 	})
+
+	/*
+	treatUploads(req.files).then(() => {
+		console.log(storage)
+
+	})*/
 })
 
 http.createServer(app).listen(port)
 
+const removeSpaces = (str) => {
+	return str.replace(/\s/g, '')
+}
+
 const getElement = (name) => {
 	let split = name.split('.')
 	let tmp = storage[split[0]][split[1]]
+	if (!tmp)
+		return 'element not found in db'
 
 	for (var i = 0; i < tmp.length; i++) {
 		if (tmp[i].name === split[2])
@@ -112,7 +123,7 @@ const writeData = () => {
 
 const readData = () => {
 	return new Promise((resolve, reject) => {
-		fs.readFile('./db/data_new.json', 'utf-8', (err, data) => {
+		fs.readFile('./db/data.json', 'utf-8', (err, data) => {
 			if (err)
 				reject(err)
 			else
@@ -125,7 +136,6 @@ const getData = () => {
 	readData().then((res) => {
 		storage = res
 		console.log('DB: Data is ready.')
-		console.log(getElement('Présentation.Premier bloc.Titre'))
 	})
 }
 

@@ -9,42 +9,43 @@ $(document).ready(function() {
 
 		$('.load').addClass('active');
 
-		var data = {
-			data: {
-				navigation: {
-					choice: $('.navigationChoice:checked').val()
-				},
-				landing: {
-					colorBackground: $('.landingColorBackground').val(),
-					textTitle: $('.landingTextTitle').val(),
-					colorTitle: $('.landingColorTitle').val(),
-					textSubtitle: $('.landingTextSubtitle').val(),
-					colorSubtitle: $('.landingColorSubtitle').val(),
-					textButton: $('.landingTextButton').val(),
-					colorButton: $('.landingColorButton').val(),
-					bgcolorButton: $('.landingBgcolorButton').val()
-				},
-				pres: {
-					textTitle: $('.presTextTitle').val(),
-					colorTitle: $('.presColorTitle').val(),
-					textSubtitle1: $('.presTextSubtitle1').val(),
-					textSubtitle2: $('.presTextSubtitle2').val(),
-					textSubtitle3: $('.presTextSubtitle3').val(),
-					textBody1: $('.presTextBody1').val(),
-					textBody2: $('.presTextBody2').val(),
-					textBody3: $('.presTextBody3').val()
+		var data = old;
+
+		for (var cat in data) {
+			for (var tab in data[cat]) {
+				for (var i = 0; i < data[cat][tab].length; i++) {
+					let tmp = data[cat][tab][i];
+					let $input = $('[data-id="' + cat + tab + tmp.name + '"]');
+
+					if (tmp.value !== $input.val())
+						data[cat][tab][i].value = $input.val();
 				}
 			}
-		};
+		}
 
+		$.ajax({
+			type: 'POST',
+			url: '/updateContent',
+			data: {
+				data: data
+			},
+			success: function(res) {
+				setTimeout(function() {
+					$('.load').removeClass('active');
+					$('.validate').addClass('success');
+				}, 2000);
+			}
+		});
+
+		/*
 		$(this).ajaxSubmit({
     	data: data,
     	contentType: 'application/json',
     	success: function(response){
-				$('.load').addClass('active');
+				$('.load').removeClass('active');
 				$('.validate').addClass('success');
     	}
-		});
+		});*/
 
   	return false;
 	});

@@ -1,1 +1,199 @@
-{"landing":{"imageBackground":"img/landing/background_blackwhite.jpg","colorBackground":"#FFFFFF","textTitle":"Lorem ipsum dolor sit amet","colorTitle":"#FFFFFF","textSubtitle":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat vulputate risus a blandit. Nunc interdum diam viverra consectetur tempor. Donec eros urna, finibus dictum velit ut, porta accumsan tellus. Curabitur non dapibus magna. Aliquam a ante mi. Vivamus aliquet tristique sapien, a pretium erat euismod id. Curabitur fermentum, ante ac scelerisque mattis, ex lacus blandit dui, finibus egestas turpis magna vel eros. Nullam porttitor rhoncus nulla, in vehicula elit egestas at. Donec euismod accumsan bibendum. Proin et lorem sed enim euismod tristique tristique at diam.","colorSubtitle":"#FFFFFF","textButton":"Lorem ipsum","colorButton":"#FFFFFF","bgcolorButton":"#2980B9"},"pres":{"textTitle":"Un grand titre, pour un grand site","colorTitle":"#000000","textSubtitle1":"Une présentation propre","textSubtitle2":"Des sites web rapides","textSubtitle3":"Support continu","textBody1":"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.","textBody2":"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.","textBody3":"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics."},"navigation":{"choice":"nav1"}}
+{
+  "Navigation": {
+    "Disposition": [
+      {
+        "name": "Choix",
+        "type": "radio",
+        "options": [
+          "nav1",
+          "nav2"
+        ],
+        "value": "nav1"
+      }
+    ],
+    "Fond": [
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#424242"
+      }
+    ],
+    "Bordure": [
+      {
+        "name": "Epaisseur",
+        "type": "number",
+        "value": 1
+      },
+      {
+        "name": "Type",
+        "type": "radio",
+        "options": [
+          "solid",
+          "dotted"
+        ],
+        "value": "solid"
+      },
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#424242"
+      }
+    ],
+    "Logo": [
+      {
+        "name": "Texte",
+        "type": "text",
+        "value": "Mon logo"
+      },
+      {
+        "name": "Image",
+        "type": "text",
+        "value": null
+      },
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#ffffff"
+      }
+    ],
+    "Menu": [
+      {
+        "name": "Couleur",
+        "Type": "text",
+        "value": "#ffffff"
+      }
+    ]
+  },
+  "Accueil": {
+    "Fond": [
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#ffffff"
+      },
+      {
+        "name": "Image",
+        "type": "text",
+        "value": "./img/landing/imageBackground.jpg"
+      }
+    ],
+    "Titre": [
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#ffffff"
+      },
+      {
+        "name": "Texte",
+        "type": "text",
+        "value": "Lorem ipsum dolor sit amet"
+      }
+    ],
+    "Sous-titre": [
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#ffffff"
+      },
+      {
+        "name": "Texte",
+        "type": "text",
+        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat vulputate risus a blandit. Nunc interdum diam viverra consectetur tempor. Donec eros urna, finibus dictum velit ut, porta accumsan tellus. Curabitur non dapibus magna. Aliquam a ante mi. Vivamus aliquet tristique sapien, a pretium erat euismod id. Curabitur fermentum, ante ac scelerisque mattis, ex lacus blandit dui, finibus egestas turpis magna vel eros. Nullam porttitor rhoncus nulla, in vehicula elit egestas at. Donec euismod accumsan bibendum. Proin et lorem sed enim euismod tristique tristique at diam."
+      }
+    ],
+    "Bouton": [
+      {
+        "name": "Couleur du fond",
+        "type": "text",
+        "value": "#2980B9"
+      },
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#ffffff"
+      },
+      {
+        "name": "Texte",
+        "type": "text",
+        "value": "Lorem ipsum"
+      }
+    ]
+  },
+  "Présentation": {
+    "Fond": [
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#ffffff"
+      },
+      {
+        "name": "Image",
+        "type": "text",
+        "value": ""
+      }
+    ],
+    "Titre": [
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#000000"
+      },
+      {
+        "name": "Texte",
+        "type": "text",
+        "value": "Un grand titre, pour un grand site"
+      }
+    ],
+    "Premier bloc": [
+      {
+        "name": "Titre",
+        "type": "text",
+        "value": "Une présentation propre"
+      },
+      {
+        "name": "Texte",
+        "type": "textarea",
+        "value": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
+      },
+      {
+        "name": "Image",
+        "type": "text",
+        "value": "./pages/pres/placeholder.png"
+      }
+    ],
+    "Second bloc": [
+      {
+        "name": "Titre",
+        "type": "text",
+        "value": "Des sites web rapides"
+      },
+      {
+        "name": "Texte",
+        "type": "textarea",
+        "value": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
+      },
+      {
+        "name": "Image",
+        "type": "text",
+        "value": "./pages/pres/placeholder.png"
+      }
+    ],
+    "Troisième bloc": [
+      {
+        "name": "Titre",
+        "type": "text",
+        "value": "Support continu"
+      },
+      {
+        "name": "Texte",
+        "type": "textarea",
+        "value": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
+      },
+      {
+        "name": "Image",
+        "type": "text",
+        "value": "./pages/pres/placeholder.png"
+      }
+    ]
+  }
+}

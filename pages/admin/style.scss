@@ -47,6 +47,7 @@
 	.load-wrap {
 		width: 80px;
 		margin: auto;
+		margin-bottom: 42px;
 
 		.load {
 			text-align: center;
@@ -105,7 +106,7 @@
 		display: inline-block;
 	}
 
-	&.nav label {
+	label {
 		margin-left: 10px;
 		margin-right: 20px;
 		display: inline-block;

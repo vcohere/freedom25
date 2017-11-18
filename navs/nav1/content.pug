@@ -1,10 +1,14 @@
 link(href="https://fonts.googleapis.com/css?family=Bitter|Raleway" rel="stylesheet")
 link(rel="stylesheet" href="/navs/nav1/style.min.css")
 
-#nav.container-fluid
+#nav.container-fluid(style='background-color: ' + ge('Navigation.Fond.Couleur') + '; border-bottom: ' + ge('Navigation.Bordure.Epaisseur') + 'px ' + ge('Navigation.Bordure.Type') + ' ' + ge('Navigation.Bordure.Couleur'))
 	.row
-		.logo.col-sm-2 Logo
-		ul.menu.col-sm-5.col-sm-offset-5
+		.logo.col-sm-4(style='color: ' + ge('Navigation.Logo.Couleur'))
+			if (ge('Navigation.Logo.Image'))
+				img(src=ge('Navigation.Logo.Image'))
+			else
+				span #{ge('Navigation.Logo.Texte')}
+		ul.menu.col-sm-5.col-sm-offset-3(style='color: ' + ge('Navigation.Menu.Couleur'))
 			.row
 				li.col-xs-3 Elem
 				li.col-xs-3 Elem
