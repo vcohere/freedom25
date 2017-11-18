@@ -1,6 +1,8 @@
 ## Freedom35
 
-Il s'agit d'un framework dans le but de faciliter la vente de sites web.
+> *Thing with me is that... I am smart, and I'm self-smarted basically by myself.*
+> *Basically from nature and smoking drugs and doing different things, I've self, like, self-learned myself.*
+Ricky
 
 ## Todo
 
