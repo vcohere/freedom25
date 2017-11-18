@@ -28,8 +28,13 @@ Il s'agit d'un framework dans le but de faciliter la vente de sites web.
 
 Futur:
 - [ ] Passer à un vrai système de bdd
+
 - [ ] Tests unitaires
+
 - [ ] Système d'acquisition de mail
+
 - [ ] Gestion de mailing list et Newsletter
+
 - [ ] WYSIWYG
+
 - [ ] Déploiement sur AWS
