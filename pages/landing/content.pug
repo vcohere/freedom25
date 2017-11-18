@@ -1,12 +1,12 @@
 link(href="https://fonts.googleapis.com/css?family=Bitter|Raleway" rel="stylesheet")
 link(rel="stylesheet" href="/pages/landing/style.min.css")
 
-#landing.container-fluid.page(style='background-image: url("'+ landing.imageBackground +'"); background-color: ' + landing.colorBackground)
+#landing.container-fluid.page(style='background-image: url("'+ ge('Accueil.Fond.Image') +'"); background-color: ' + ge('Accueil.Fond.Couleur'))
 	.row
 		.bloc.col-sm-8
-			h2(style='color: ' + landing.colorTitle)
-				| #{landing.textTitle}
-			p.row(style='color: ' + landing.colorSubtitle)
-				| #{landing.textSubtitle}
-				.button.col-sm-4.col-centered
-					| #{landing.textButton}
+			h2(style='color: ' + ge('Accueil.Titre.Couleur'))
+				| #{ge('Accueil.Titre.Texte')}
+			p.row(style='color: ' + ge('Accueil.Sous-titre.Couleur'))
+				| #{ge('Accueil.Sous-titre.Texte')}
+				.button.col-sm-4.col-centered(style='color: ' + ge('Accueil.Bouton.Couleur') + '; background-color: ' + ge('Accueil.Bouton.Couleur du fond'))
+					| #{ge('Accueil.Bouton.Texte')}

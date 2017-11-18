@@ -20,6 +20,10 @@
 		transform: translateY(-50%);
 	}
 
+	h2.active {
+		background-color: #fafafa;
+	}
+
 	h2.active:after {
 		content: '-';
 	}
@@ -31,11 +35,13 @@
 	.collapsable {
 		height: 0;
 		overflow: hidden;
+		border-bottom: 1px solid #dadada;
 	}
 
 	.collapsable.active {
 		height: auto;
 		padding: 0px 20px;
+		background-color: #fafafa;
 	}
 
 	.load-wrap {
@@ -80,7 +86,7 @@
 	}
 
 	h3 {
-		padding: 20px;
+		padding: 20px 0px;
 	}
 
 	input, textarea {

@@ -39,7 +39,7 @@ app.use('/lib', serveStatic(__dirname + '/lib'))
 app.use('/img', serveStatic(__dirname + '/img'))
 
 app.get('/', (req, res) => {
-  res.render(__dirname + '/index.pug', storage)
+  res.render(__dirname + '/index.pug', {ge: getElement})
 })
 
 app.get('/admin', (req, res) => {
@@ -50,7 +50,6 @@ app.post('/updateContent', upload.any(), (req, res) => {
 	storage = req.body.data
 
 	treatUploads(req.files).then(() => {
-		console.log(storage)
 
 		/*
 		writeData().then((data) => {
@@ -62,9 +61,21 @@ app.post('/updateContent', upload.any(), (req, res) => {
 
 http.createServer(app).listen(port)
 
+const getElement = (name) => {
+	let split = name.split('.')
+	let tmp = storage[split[0]][split[1]]
+
+	for (var i = 0; i < tmp.length; i++) {
+		if (tmp[i].name === split[2])
+			return tmp[i].value
+	}
+
+	return 'not found'
+}
+
 const treatUploads = (files) => {
 	return new Promise((resolve, reject) => {
-		var count = 0;
+		let count = 0;
 
 		for (var i = 0; i < files.length; i++) {
 			let tmp = files[i].fieldname.split('-'),
@@ -101,7 +112,7 @@ const writeData = () => {
 
 const readData = () => {
 	return new Promise((resolve, reject) => {
-		fs.readFile('./db/data.json', 'utf-8', (err, data) => {
+		fs.readFile('./db/data_new.json', 'utf-8', (err, data) => {
 			if (err)
 				reject(err)
 			else
@@ -113,9 +124,8 @@ const readData = () => {
 const getData = () => {
 	readData().then((res) => {
 		storage = res
-		console.log('\n\n\n\n')
-		console.log(res)
 		console.log('DB: Data is ready.')
+		console.log(getElement('Présentation.Premier bloc.Titre'))
 	})
 }
 

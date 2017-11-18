@@ -1,29 +1,29 @@
 link(href="https://fonts.googleapis.com/css?family=Bitter|Raleway" rel="stylesheet")
 link(rel="stylesheet" href="/pages/pres/style.min.css")
 
-#galery_photos.container.page
+#galery_photos.container.page(style='background-image: url("'+ ge('Présentation.Fond.Image') +'"); background-color: ' + ge('Présentation.Fond.Couleur'))
 	.row
-		h1
-			| #{pres.textTitle}
+		h1(style='color: ' + ge('Présentation.Titre.Couleur'))
+			| #{ge('Présentation.Titre.Texte')}
 	.row
 		.col-md-4.box
 			.wrap
-				img(src="/pages/pres/placeholder.png")
+				img(src=ge('Présentation.Premier bloc.Image'))
 			h2
-				| #{pres.textSubtitle1}
+				| #{ge('Présentation.Premier bloc.Titre')}
 			p
-				| #{pres.textBody1}
+				| #{ge('Présentation.Premier bloc.Texte')}
 		.col-md-4.box
 			.wrap
-				img(src="/pages/pres/placeholder.png")
+				img(src=ge('Présentation.Second bloc.Image'))
 			h2
-				| #{pres.textSubtitle2}
+				| #{ge('Présentation.Second bloc.Titre')}
 			p
-				| #{pres.textBody2}
+				| #{ge('Présentation.Second bloc.Texte')}
 		.col-md-4.box
 			.wrap
-				img(src="/pages/pres/placeholder.png")
+				img(src=ge('Présentation.Troisième bloc.Image'))
 			h2
-				| #{pres.textSubtitle3}
+				| #{ge('Présentation.Troisième bloc.Titre')}
 			p
-				| #{pres.textBody3}
+				| #{ge('Présentation.Troisième bloc.Texte')}
