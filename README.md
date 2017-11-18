@@ -7,18 +7,22 @@ Ricky
 
 ## Todo
 
+- [x] Automatiser le back-up de la bdd
+- [x] Bouton pour revenir au site depuis le back-office
+- [x] Vraies pages dans le menu
+- [x] Inclusion des pages intelligentes avec la db
+- [x] Choix multi-page / full-page
 - [ ] Menu de restaurant
 - [ ] Page de contact
 - [ ] Footer
 - [ ] Menu burger en mode Mobile
-- [x] Vraies pages dans le menu
+- [ ] Rassembler les assets static dans un dossier
 - [ ] Passer le panneau d'admin en bootstrap
 - [ ] Interface pour choisir les pages qu'on veut et leur ordre
 - [ ] Relier toutes les vues à la db
-- [ ] Choix multi-page / full-page
-- [x] Inclusion des pages intelligentes avec la db
+- [ ] Stocker choix multi-page / full-page en base
+- [ ] Afficher l'option du choix multi-page / full-page sur le panneau d'admin
 - [ ] Option pour prévisualiser le site avec les nouveaux changements
-- [x] Bouton pour revenir au site depuis le back-office
 - [ ] Modification des fonts depuis le back-office
 - [ ] Sécuriser le panneau d'administration
 - [ ] Infobulles pour expliquer les champs du back-office
@@ -30,7 +34,6 @@ Ricky
 - [ ] Passer en architecture Docker
 - [ ] Faire un environnement de dev et un de prod ( Plus tard plusieurs prod esclaves )
 - [ ] Automatiser les build et minification avec Gulp
-- [x] Automatiser le back-up de la bdd
 
 Futur:
 - [ ] Passer à un vrai système de bdd

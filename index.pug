@@ -5,6 +5,8 @@ html
 		link(href='lib/bootstrap-3.3.7/css/bootstrap.css' rel='stylesheet')
 		script(src='/pages/admin/jquery-3.2.1.min.js')
 		script(src='js/controller.js')
+		script.
+			multi = #{multi}
 	body
 		if (ge('Navigation.Disposition.Choix') == 'nav1')
 			include navs/nav1/content.pug

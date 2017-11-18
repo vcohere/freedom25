@@ -43,7 +43,13 @@ app.use('/js', serveStatic(__dirname + '/js'))
 app.all('/*', morgan('tiny'))
 
 app.get('/', (req, res) => {
-  res.render(__dirname + '/index.pug', {ge: getElement, gp: getPages, gf: getFolder, isInPages: isInPages})
+  res.render(__dirname + '/index.pug', {
+		ge: getElement,
+		gp: getPages,
+		gf: getFolder,
+		isInPages: isInPages,
+		multi: true
+	})
 })
 
 app.get('/admin', (req, res) => {
