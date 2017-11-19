@@ -10,10 +10,12 @@ html
 		script.
 			old=!{JSON.stringify(data)};
 		script(src='/pages/admin/controller.js')
+		include _mixins.pug
 	body
 		#header
 			a(href='/')
 				.home.fa.fa-home.fa-4x
+
 		form(enctype='multipart/form-data' method='post' id='form' action='/updateContent')
 			each cat, h1 in data
 				.bloc
@@ -25,16 +27,11 @@ html
 								each val in tab
 									h3 #{val.name}
 									if val.type === 'radio'
-										each value in val.options
-											if val.value === value
-												input(type='radio' value=value data-id=h1 + h2 + val.name name=removeSpaces(h1 + h2 + val.name) checked)
-											else
-												input(type='radio' value=value data-id=h1 + h2 + val.name name=removeSpaces(h1 + h2 + val.name))
-											label(for=removeSpaces(h1 + h2 + val.name)) #{value}
+										+radio(val)
 									else if val.type === 'textarea'
-										textarea(data-id=h1 + h2 + val.name) #{val.value}
+										+textarea(val)
 									else
-										input(type=val.type value=val.value data-id=h1 + h2 + val.name)
+										+text(val)
 			.bloc
 				.load-wrap
 					.load

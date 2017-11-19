@@ -1,0 +1,16 @@
+mixin radio(data)
+  each value in data.options
+    if data.value === value
+      input(type='radio' value=value data-id=h1 + h2 + data.name name=removeSpaces(h1 + h2 + data.name) checked)
+    else
+      input(type='radio' value=value data-id=h1 + h2 + data.name name=removeSpaces(h1 + h2 + data.name))
+    label(for=removeSpaces(h1 + h2 + data.name)) #{value}
+
+mixin text(data)
+  input(type=data.type value=data.value data-id=h1 + h2 + data.name)
+
+mixin textarea(data)
+  textarea(data-id=h1 + h2 + data.name) #{data.value}
+
+mixin switch(data)
+  test
