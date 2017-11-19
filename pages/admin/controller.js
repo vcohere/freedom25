@@ -15,14 +15,20 @@ $(document).ready(function() {
 			for (var tab in data[cat]) {
 				for (var i = 0; i < data[cat][tab].length; i++) {
 					let tmp = data[cat][tab][i];
-					let $input = $('[data-id="' + cat + tab + tmp.name + '"]');
 
-					if (tmp.value !== $input.val())
+					if (tmp.type === 'radio') {
+						var $input = $('[data-id="' + cat + tab + tmp.name + '"]:checked');
+					}
+					else
+						var $input = $('[data-id="' + cat + tab + tmp.name + '"]');
+
+					if (tmp.value !== $input.val() && $input.val() && $input.val().length > 0)
 						data[cat][tab][i].value = $input.val();
 				}
 			}
 		}
-
+		console.log(data);
+		/*
 		$.ajax({
 			type: 'POST',
 			url: '/updateContent',

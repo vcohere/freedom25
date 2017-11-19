@@ -15,27 +15,30 @@ html
 			a(href='/')
 				.home.fa.fa-home.fa-4x
 		form(enctype='multipart/form-data' method='post' id='form' action='/updateContent')
-			each cat, h1 in data
-				.bloc
-					h1 Général
-					h2 Type de site
-					.collapsable
-						input(type='radio' name='multi' value='multi')
-						label(for='multi') Multi-pages
-						input(type='radio' name='multi' value='full')
-						label(for='multi') Une seule page
+			.bloc
+				h1 Général
+				h2 Type de site
+				.collapsable
+					input(type='radio' name='multi' value='multi')
+					label(for='multi') Multi-pages
+					input(type='radio' name='multi' value='full')
+					label(for='multi') Une seule page
 
+			each cat, h1 in data
 				.bloc
 					h1 #{h1}
 					each tab, h2 in cat
 						h2 #{h2}
 						.collapsable
 							each val in tab
-								if (val.name != "data")
+								if (val.name != 'data')
 									h3 #{val.name}
 									if val.type === 'radio'
 										each value in val.options
-											input(type='radio' value=value data-id=h1 + h2 + val.name name=removeSpaces(h1 + h2 + val.name))
+											if val.value === value
+												input(type='radio' value=value data-id=h1 + h2 + val.name name=removeSpaces(h1 + h2 + val.name) checked)
+											else
+												input(type='radio' value=value data-id=h1 + h2 + val.name name=removeSpaces(h1 + h2 + val.name))
 											label(for=removeSpaces(h1 + h2 + val.name)) #{value}
 									else if val.type === 'textarea'
 										textarea(data-id=h1 + h2 + val.name) #{val.value}
