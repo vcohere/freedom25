@@ -1,5 +1,16 @@
 {
   "Navigation": {
+    "Type de site": [
+      {
+        "name": "Choix",
+        "type": "radio",
+        "options": [
+          "multi",
+          "full"
+        ],
+        "value": "multi"
+      }
+    ],
     "Disposition": [
       {
         "name": "Choix",
@@ -62,7 +73,10 @@
         "Type": "text",
         "value": "#ffffff"
       }
-    ]
+    ],
+    "data": {
+      "folder": "nav1"
+    }
   },
   "Accueil": {
     "Fond": [
@@ -74,7 +88,7 @@
       {
         "name": "Image",
         "type": "text",
-        "value": "./img/landing/imageBackground.jpg"
+        "value": "./static/img/landing/imageBackground.jpg"
       }
     ],
     "Titre": [
@@ -117,7 +131,10 @@
         "type": "text",
         "value": "Lorem ipsum"
       }
-    ]
+    ],
+    "data": {
+      "folder": "landing"
+    }
   },
   "Présentation": {
     "Fond": [
@@ -194,6 +211,9 @@
         "type": "text",
         "value": "./pages/pres/placeholder.png"
       }
-    ]
+    ],
+    "data": {
+      "folder": "pres"
+    }
   }
 }

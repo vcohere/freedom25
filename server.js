@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 		gp: getPages,
 		gf: getFolder,
 		isInPages: isInPages,
-		multi: true
+		multi: isMultiPage()
 	})
 })
 
@@ -102,6 +102,13 @@ const isInPages = (page) => {
 	}
 
 	return false;
+}
+
+const isMultiPage = () => {
+	if (getElement('Navigation.Type de site.Choix') === 'multi')
+		return true
+	else
+		return false
 }
 
 const getElement = (name) => {
