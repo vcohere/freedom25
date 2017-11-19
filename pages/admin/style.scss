@@ -79,37 +79,6 @@ body {
 		border-radius: 4px;
 	}
 
-
-	.load-wrap {
-		width: 80px;
-		margin: auto;
-		margin-bottom: 42px;
-
-		.load {
-			text-align: center;
-			opacity: 0;
-
-			&.active {
-				opacity: 1;
-			}
-
-			.square {
-				width: 12px;
-				height: 12px;
-				border-radius: 4px;
-				background-color: #424242;
-				animation: loadingG 1.5s cubic-bezier(.17,.37,.43,.67) infinite;
-			}
-		}
-
-		@keyframes loadingG {
-			0% {transform: translate(0,0) rotate(0deg);}
-			50% {transform: translate(70px,0) rotate(360deg);}
-			100% {transform: translate(0,0) rotate(0deg);}
-		}
-	}
-
-
 	h1 {
 		font-family: 'Bitter', serif;
 		margin-bottom: 20px;
@@ -156,16 +125,66 @@ body {
 		height: 120px;
 	}
 
-	input[type='submit'] {
-		background-color: #27ae60;
-		color: white;
-		padding: 20px;
-		text-align: center;
-		border-radius: 4px;
-		border: none;
-		cursor: pointer;
-		font-weight: 300;
-		transition: background-color 200ms ease-in-out;
+	.validate {
+	  position: relative;
+	  background-color: #27ae60;
+	  color: #fafafa;
+	  padding: 20px;
+	  text-align: center;
+	  border-radius: 4px;
+	  cursor: pointer;
+	  font-weight: 300;
+		margin-bottom: 20px;
+
+		span {
+			margin-left: 15px;
+		}
+
+		.fa-check {
+			margin-left: 15px;
+			opacity: 0;
+		}
+
+	  &.progress span {
+	    opacity: 0;
+	  }
+
+	  &.progress .load-wrap .load {
+	    opacity: 1;
+	  }
+
+		&.success .fa-check {
+			opacity: 1;
+		}
+
+	  .load-wrap {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translateX(-50%) translateY(-50%);
+	    width: 80px;
+	    margin: auto;
+	    margin-bottom: 42px;
+
+	    .load {
+	      text-align: center;
+	      opacity: 0;
+
+	      .square {
+	        width: 12px;
+	        height: 12px;
+	        border-radius: 4px;
+	        background-color: #fafafa;
+	        animation: loadingG 1.5s cubic-bezier(.17,.37,.43,.67) infinite;
+	      }
+	    }
+
+	    @keyframes loadingG {
+	      0% {transform: translate(0,0) rotate(0deg);}
+	      50% {transform: translate(70px,0) rotate(360deg);}
+	      100% {transform: translate(0,0) rotate(0deg);}
+	    }
+	  }
 
 		&.file-submit {
 			width: 50%;
@@ -173,10 +192,6 @@ body {
 
 		&:focus {
 			outline: none;
-		}
-
-		&.success {
-			background-color: #22A7F0;
 		}
 	}
 }

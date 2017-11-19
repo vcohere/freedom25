@@ -34,7 +34,10 @@ html
 								else
 									+text(h1, h2, val)
 		.bloc
-			.load-wrap
-				.load
-					.square
-			input(type='submit' value='Enregistrer')#validate
+			.validate#validate
+				span
+					| Enregistrer
+					i.fa.fa-check
+				.load-wrap
+						.load
+							.square

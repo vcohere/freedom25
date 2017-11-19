@@ -4,6 +4,10 @@ $(document).ready(function() {
 		$(this).toggleClass('active');
 	});
 
+	$('.validate').on('click', function(e) {
+		$(this).closest('form').submit();
+	});
+
 	$('.form').on('submit', function(e) {
 		e.preventDefault();
 
@@ -12,18 +16,16 @@ $(document).ready(function() {
 			key: $(this).attr('data-key')
 		};
 
-		var $load = $(this).find('.load'),
-				$validate = $(this).find('input[type="submit"]');
+		var $validate = $(this).find('.validate');
 
-		$load.addClass('active');
+		$validate.addClass('progress');
 
 		$(this).ajaxSubmit({
 			data: data,
 			contentType: 'application/json',
 			success: function(res) {
 				setTimeout(function() {
-					$load.removeClass('active');
-					$validate.addClass('success');
+					$validate.removeClass('progress').addClass('success');
 				}, 1000);
 			}
 		});
@@ -34,7 +36,9 @@ $(document).ready(function() {
 	$('#validate').on('click', function(e) {
 		e.preventDefault();
 
-		$('.load').addClass('active');
+		var $validate = $(this);
+
+		$validate.addClass('progress');
 
 		var data = old;
 
@@ -64,8 +68,7 @@ $(document).ready(function() {
 			},
 			success: function(res) {
 				setTimeout(function() {
-					$('.load').removeClass('active');
-					$('.validate').addClass('success');
+					$validate.removeClass('progress').addClass('success');
 				}, 2000);
 			}
 		});

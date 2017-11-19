@@ -19,6 +19,7 @@ Done:
 - [x] Créer des mixin Pug pour le panneau d'admin ( input file, input radio, select... )
 - [x] Upload des images sans valider le formulaire depuis le back-office avec une route dédiée
 - [x] Supprimer l'ancienne photo uploadée
+- [x] Meilleur bouton et chargement
 
 Pages:
 - [ ] Page de contact
@@ -34,8 +35,6 @@ Pages:
 - [ ] Background fixed
 
 Panneau d'admin:
-
-- [ ] Meilleur bouton et chargement
 
 - [ ] Faire une requête une fois la photo uploadée pour l'afficher
 
@@ -67,6 +66,8 @@ Back-end:
 - [ ] Automatiser les build et minification avec Gulp
 
 - [ ] Automatiser les actions sur la bdd
+
+- [ ] Unescaped buffered code PUG faille secu
 
 Futur:
 - [ ] Passer à un vrai système de bdd
