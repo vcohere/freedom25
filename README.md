@@ -17,6 +17,8 @@ Done:
 - [x] Stocker choix multi-page / full-page en base
 - [x] Rassembler les assets static dans un dossier
 - [x] Créer des mixin Pug pour le panneau d'admin ( input file, input radio, select... )
+- [x] Upload des images sans valider le formulaire depuis le back-office avec une route dédiée
+- [x] Supprimer l'ancienne photo uploadée
 
 Pages:
 - [ ] Page de contact
@@ -33,11 +35,13 @@ Pages:
 
 Panneau d'admin:
 
-- [ ] Upload des images sans valider le formulaire depuis le back-office avec une route dédiée
+- [ ] Meilleur bouton et chargement
+
+- [ ] Faire une requête une fois la photo uploadée pour l'afficher
+
+- [ ] Bouton pour supprimer la photo
 
 - [ ] Vérification du type de fichier uploadé, et sa taille
-
-- [ ] Supprimer l'ancienne photo uploadée
 
 - [ ] Option pour hide/show les éléments
 

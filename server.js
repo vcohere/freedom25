@@ -9,6 +9,7 @@ const http = require('http'),
 		loki = require('lokijs'),
 		multer = require('multer'),
 		morgan = require('morgan'),
+		mkdirp = require('mkdirp'),
 		Promise = require('promise')
 
 const port = 8080,
@@ -16,7 +17,7 @@ const port = 8080,
 
 var storageMulter = multer.diskStorage({
     destination: function(req, file, callback){
-        callback(null, './img'); // set the destination
+        callback(null, './static/img'); // set the destination
     },
     filename: function(req, file, callback){
         callback(null, Date.now() + '.jpg'); // set the file name and extension
@@ -51,22 +52,29 @@ app.get('/', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
-	res.render(__dirname + '/pages/admin/admin.pug', {data: storage, removeSpaces: removeSpaces})
+	res.render(__dirname + '/pages/admin/admin.pug', {data: storage, removeSpaces: removeSpaces, gf: getFolder})
 })
 
-app.post('/updateContent', upload.any(), (req, res) => {
+app.post('/updateContent', (req, res) => {
 	storage = req.body.data
 
-	writeData().then((data) => {
+	writeData().then(() => {
 		res.sendStatus(200)
 		getData()
+	}).catch((err) => {
+		console.log(err)
 	})
+})
 
-	/*
-	treatUploads(req.files).then(() => {
-		console.log(storage)
-
-	})*/
+app.post('/uploadPhoto', upload.any(), (req, res) => {
+	treatUploads(req.files, req.body).then(() => {
+		writeData().then(() => {
+			res.sendStatus(200)
+			getData()
+		})
+	}).catch((err) => {
+		console.log(err)
+	})
 })
 
 http.createServer(app).listen(port)
@@ -125,25 +133,40 @@ const getElement = (name) => {
 	return 'not found'
 }
 
-const treatUploads = (files) => {
+const treatUploads = (files, data) => {
+	// Code à refactoriser !!!! C'est l'horreur
 	return new Promise((resolve, reject) => {
-		let count = 0;
+		let ext = files[0].originalname.split('.').slice(-1)[0],
+				name = files[0].filename.split('.')[0],
+				keys = data.key.split('.')
+		let path = files[0].destination + '/' + data.path + '/',
+				filename = name + '.' + ext
 
-		for (var i = 0; i < files.length; i++) {
-			let tmp = files[i].fieldname.split('-'),
-					ext = files[i].originalname.split('.').slice(-1)[0]
-			let path = files[i].destination + '/' + tmp[0] + '/' + tmp[1] + '.' + ext
+		mkdirp(path, (err) => {
+			if (err) {
+				reject(err)
+				return false;
+			}
 
-			fs.rename(files[i].path, path, (err) => {
-				if (err)
+			fs.rename(files[0].path, path + filename, (err) => {
+				if (err) {
 					reject(err)
+					return false;
+				}
 
-				storage[tmp[0]][tmp[1]] = path
-				count++
-				if (count === files.length)
-					resolve(true)
+				for (var i = 0; i < storage[keys[0]][keys[1]].length; i++) {
+					if (storage[keys[0]][keys[1]][i].name === keys[2]) {
+						let s = i
+
+						fs.unlink(storage[keys[0]][keys[1]][s].value, (err) => {
+							storage[keys[0]][keys[1]][s].value = path + filename
+							resolve(true)
+						})
+						break;
+					}
+				}
 			})
-		}
+		})
 	})
 }
 

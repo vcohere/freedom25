@@ -4,7 +4,34 @@ $(document).ready(function() {
 		$(this).toggleClass('active');
 	});
 
-	$('#form').submit(function(e) {
+	$('.form').on('submit', function(e) {
+		e.preventDefault();
+
+		var data = {
+			path: $(this).attr('data-path'),
+			key: $(this).attr('data-key')
+		};
+
+		var $load = $(this).find('.load'),
+				$validate = $(this).find('input[type="submit"]');
+
+		$load.addClass('active');
+
+		$(this).ajaxSubmit({
+			data: data,
+			contentType: 'application/json',
+			success: function(res) {
+				setTimeout(function() {
+					$load.removeClass('active');
+					$validate.addClass('success');
+				}, 1000);
+			}
+		});
+
+		return false;
+	})
+
+	$('#validate').on('click', function(e) {
 		e.preventDefault();
 
 		$('.load').addClass('active');
@@ -16,9 +43,10 @@ $(document).ready(function() {
 				for (var i = 0; i < data[cat][tab].length; i++) {
 					let tmp = data[cat][tab][i];
 
-					if (tmp.type === 'radio') {
+					if (tmp.type === 'file')
+						continue;
+					if (tmp.type === 'radio')
 						var $input = $('[data-id="' + cat + tab + tmp.name + '"]:checked');
-					}
 					else
 						var $input = $('[data-id="' + cat + tab + tmp.name + '"]');
 
@@ -27,7 +55,7 @@ $(document).ready(function() {
 				}
 			}
 		}
-		
+
 		$.ajax({
 			type: 'POST',
 			url: '/updateContent',
@@ -41,16 +69,6 @@ $(document).ready(function() {
 				}, 2000);
 			}
 		});
-
-		/*
-		$(this).ajaxSubmit({
-    	data: data,
-    	contentType: 'application/json',
-    	success: function(response){
-				$('.load').removeClass('active');
-				$('.validate').addClass('success');
-    	}
-		});*/
 
   	return false;
 	});

@@ -71,6 +71,15 @@ body {
 		background-color: #fafafa;
 	}
 
+	.preview {
+		width: 266px;
+		height: 150px;
+		margin-bottom: 20px;
+		border: 1px solid #bdc3c7;
+		border-radius: 4px;
+	}
+
+
 	.load-wrap {
 		width: 80px;
 		margin: auto;
@@ -128,6 +137,10 @@ body {
 		font-weight: 300;
 	}
 
+	input:focus, textarea:focus {
+		outline: none;
+	}
+
 	input[type='radio'] {
 		width: auto;
 		display: inline-block;
@@ -143,15 +156,20 @@ body {
 		height: 120px;
 	}
 
-	.validate {
+	input[type='submit'] {
 		background-color: #27ae60;
 		color: white;
 		padding: 20px;
 		text-align: center;
 		border-radius: 4px;
+		border: none;
 		cursor: pointer;
 		font-weight: 300;
 		transition: background-color 200ms ease-in-out;
+
+		&.file-submit {
+			width: 50%;
+		}
 
 		&:focus {
 			outline: none;

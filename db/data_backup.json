@@ -87,7 +87,7 @@
       },
       {
         "name": "Image",
-        "type": "text",
+        "type": "file",
         "value": "./static/img/landing/imageBackground.jpg"
       }
     ],
@@ -145,7 +145,7 @@
       },
       {
         "name": "Image",
-        "type": "text",
+        "type": "file",
         "value": ""
       }
     ],
@@ -174,7 +174,7 @@
       },
       {
         "name": "Image",
-        "type": "text",
+        "type": "file",
         "value": "./pages/pres/placeholder.png"
       }
     ],
@@ -191,7 +191,7 @@
       },
       {
         "name": "Image",
-        "type": "text",
+        "type": "file",
         "value": "./pages/pres/placeholder.png"
       }
     ],
@@ -208,7 +208,7 @@
       },
       {
         "name": "Image",
-        "type": "text",
+        "type": "file",
         "value": "./pages/pres/placeholder.png"
       }
     ],

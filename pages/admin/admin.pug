@@ -16,24 +16,25 @@ html
 			a(href='/')
 				.home.fa.fa-home.fa-4x
 
-		form(enctype='multipart/form-data' method='post' id='form' action='/updateContent')
-			each cat, h1 in data
-				.bloc
-					h1 #{h1}
-					each tab, h2 in cat
-						if h2 !== 'data'
-							h2 #{h2}
-							.collapsable
-								each val in tab
-									h3 #{val.name}
-									if val.type === 'radio'
-										+radio(val)
-									else if val.type === 'textarea'
-										+textarea(val)
-									else
-										+text(val)
+		each cat, h1 in data
 			.bloc
-				.load-wrap
-					.load
-						.square
-				input(type='submit').validate
+				h1 #{h1}
+				each tab, h2 in cat
+					if h2 !== 'data'
+						h2 #{h2}
+						.collapsable
+							each val in tab
+								h3 #{val.name}
+								if val.type === 'radio'
+									+radio(h1, h2, val)
+								else if val.type === 'textarea'
+									+textarea(h1, h2, val)
+								else if val.type === 'file'
+									+file(h1, h2, val)
+								else
+									+text(h1, h2, val)
+		.bloc
+			.load-wrap
+				.load
+					.square
+			input(type='submit' value='Enregistrer')#validate
