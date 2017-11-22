@@ -21,6 +21,7 @@ Done:
 - [x] Supprimer l'ancienne photo uploadée
 - [x] Meilleur bouton et chargement
 - [x] Relier toutes les vues à la db
+- [x] Séparer le code Node en librairies
 
 Pages:
 - [ ] Page de contact
@@ -65,8 +66,6 @@ Panneau d'admin:
 
 Back-end:
 - [ ] Installer lecteur et editeur de JSON
-
-- [ ] Séparer le code Node en librairies
 
 - [ ] Passer en architecture Docker
 

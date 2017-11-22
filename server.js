@@ -9,7 +9,7 @@ const http = require('http'),
 		multer = require('multer'),
 		morgan = require('morgan'),
 		Promise = require('promise'),
-		db = require('./db')
+		db = require('./lib/db')
 
 const port = 8000,
 		app = express()
