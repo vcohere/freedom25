@@ -145,6 +145,12 @@ body {
 			opacity: 0;
 		}
 
+		.fa-exclamation {
+			position: relative;
+			right: 12px;
+			opacity: 0;
+		}
+
 	  &.progress span {
 	    opacity: 0;
 	  }
@@ -155,6 +161,14 @@ body {
 
 		&.success .fa-check {
 			opacity: 1;
+		}
+
+		&.error .fa-exclamation {
+			opacity: 1;
+		}
+
+		&.error {
+			background-color: #e74c3c;
 		}
 
 	  .load-wrap {

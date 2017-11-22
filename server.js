@@ -23,7 +23,6 @@ var storageMulter = multer.diskStorage({
     }
 })
 
-
 const upload = multer({
 	storage: storageMulter
 })
@@ -51,31 +50,27 @@ app.get('/', (req, res) => {
 
 app.get('/admin', (req, res) => {
 	res.render(__dirname + '/pages/admin/admin.pug', {
-		data: db.getFullStorage(),
+		data: db.getStorage(),
 		removeSpaces: removeSpaces,
 		gf: db.getFolder
 	})
 })
 
 app.post('/updateContent', (req, res) => {
-	db.setStorage(req.body.data)
-
-	db.writeData().then(() => {
+	db.setStorage(req.body.data).then(() => {
 		res.sendStatus(200)
-		db.getData()
 	}).catch((err) => {
 		console.log(err)
+		res.sendStatus(418)
 	})
 })
 
 app.post('/uploadPhoto', upload.any(), (req, res) => {
-	db.treatUploads(req.files, req.body).then(() => {
-		db.writeData().then(() => {
-			res.sendStatus(200)
-			db.getData()
-		})
+	db.storeUpload(req.files, req.body).then(() => {
+		res.sendStatus(200)
 	}).catch((err) => {
 		console.log(err)
+		res.sendStatus(418)
 	})
 })
 

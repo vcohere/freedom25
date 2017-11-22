@@ -27,6 +27,9 @@ $(document).ready(function() {
 				setTimeout(function() {
 					$validate.removeClass('progress').addClass('success');
 				}, 1000);
+			},
+			error: function() {
+				$validate.removeClass('progress').addClass('error');
 			}
 		});
 

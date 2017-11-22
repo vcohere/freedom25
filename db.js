@@ -16,7 +16,16 @@ const isInPages = (page) => {
 }
 
 const setStorage = (data) => {
-  storage = data
+	return new Promise((resolve, reject) => {
+		storage = data
+
+		writeData().then(() => {
+			getData()
+			resolve(true)
+		}).catch((err) => {
+			reject(err)
+		})
+	})
 }
 
 const getStorage = () => {
@@ -64,9 +73,9 @@ const getElement = (name) => {
 	return 'not found'
 }
 
-const storeUploads = (files, data) => {
+const storeUpload = (files, data) => {
 	// Code à refactoriser !!!! C'est l'horreur
-	return new Promise((resolve, reject) => {
+	var promise = new Promise((resolve, reject) => {
 		let ext = files[0].originalname.split('.').slice(-1)[0],
 				name = files[0].filename.split('.')[0],
 				keys = data.key.split('.')
@@ -97,6 +106,17 @@ const storeUploads = (files, data) => {
 					}
 				}
 			})
+		})
+	})
+
+	return new Promise((resolve, reject) => {
+		promise.then(() => {
+			writeData().then(() => {
+				getData()
+				resolve(true)
+			})
+		}).catch((err) => {
+			reject(err)
 		})
 	})
 }
@@ -141,9 +161,7 @@ module.exports = {
   getElement: getElement,
   getMultiPage: getMultiPage,
   isInPages: isInPages,
-  storeUploads: storeUploads,
-  writeData: writeData,
-  readData: readData,
+  storeUpload: storeUpload,
   getData: getData,
   getStorage: getStorage,
   setStorage: setStorage
