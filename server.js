@@ -9,7 +9,7 @@ const http = require('http'),
 		multer = require('multer'),
 		morgan = require('morgan'),
 		Promise = require('promise'),
-		db = require('./getter')
+		db = require('./db')
 
 const port = 8000,
 		app = express()
@@ -41,38 +41,38 @@ app.all('/*', morgan('tiny'))
 
 app.get('/', (req, res) => {
   res.render(__dirname + '/index.pug', {
-		ge: getter.getElement,
-		gp: getter.getPages,
-		gf: getter.getFolder,
-		isInPages: getter.isInPages,
-		multi: getter.getMultiPage()
+		ge: db.getElement,
+		gp: db.getPages,
+		gf: db.getFolder,
+		isInPages: db.isInPages,
+		multi: db.getMultiPage()
 	})
 })
 
 app.get('/admin', (req, res) => {
 	res.render(__dirname + '/pages/admin/admin.pug', {
-		data: getter.getFullStorage(),
+		data: db.getFullStorage(),
 		removeSpaces: removeSpaces,
-		gf: getter.getFolder
+		gf: db.getFolder
 	})
 })
 
 app.post('/updateContent', (req, res) => {
-	getter.setStorage(req.body.data)
+	db.setStorage(req.body.data)
 
-	getter.writeData().then(() => {
+	db.writeData().then(() => {
 		res.sendStatus(200)
-		getter.getData()
+		db.getData()
 	}).catch((err) => {
 		console.log(err)
 	})
 })
 
 app.post('/uploadPhoto', upload.any(), (req, res) => {
-	getter.treatUploads(req.files, req.body).then(() => {
-		getter.writeData().then(() => {
+	db.treatUploads(req.files, req.body).then(() => {
+		db.writeData().then(() => {
 			res.sendStatus(200)
-			getter.getData()
+			db.getData()
 		})
 	}).catch((err) => {
 		console.log(err)
@@ -81,7 +81,7 @@ app.post('/uploadPhoto', upload.any(), (req, res) => {
 
 http.createServer(app).listen(port)
 
-getter.getData()
+db.getData()
 
 console.log('WEB: Started at http://localhost:'+port+'/')
 
