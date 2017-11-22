@@ -10,9 +10,10 @@ const http = require('http'),
 		multer = require('multer'),
 		morgan = require('morgan'),
 		mkdirp = require('mkdirp'),
-		Promise = require('promise')
+		Promise = require('promise'),
+		getter = require('./getter.js')
 
-const port = 8080,
+const port = 8000,
 		app = express()
 
 var storageMulter = multer.diskStorage({
@@ -206,4 +207,4 @@ const getData = () => {
 fs.watch('./db/data.json', () => { getData() })
 
 getData()
-console.log('WEB: Started at http://localhost:8080/')
+console.log('WEB: Started at http://localhost:'+port+'/')

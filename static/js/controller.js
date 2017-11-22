@@ -7,6 +7,8 @@ $(document).ready(function() {
 
       $('.page').hide();
       $(curr + '.page').show();
-    })
+    });
+
+    $('.page').not('#landing').css('padding-top', '50px');
   }
 });

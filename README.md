@@ -20,6 +20,7 @@ Done:
 - [x] Upload des images sans valider le formulaire depuis le back-office avec une route dédiée
 - [x] Supprimer l'ancienne photo uploadée
 - [x] Meilleur bouton et chargement
+- [x] Relier toutes les vues à la db
 
 Pages:
 - [ ] Page de contact
@@ -27,8 +28,6 @@ Pages:
 - [ ] Footer
 
 - [ ] Menu burger en mode Mobile
-
-- [ ] Relier toutes les vues à la db
 
 - [ ] Menu de restaurant
 
@@ -56,7 +55,17 @@ Panneau d'admin:
 
 - [ ] Sécuriser le panneau d'administration
 
+- [ ] Input type couleur
+
+- [ ] Input type switch
+
+- [ ] Afficher le traffic sur le site
+
+- [ ] Backup de DB + retour à la dernière backup
+
 Back-end:
+- [ ] Installer lecteur et editeur de JSON
+
 - [ ] Séparer le code Node en librairies
 
 - [ ] Passer en architecture Docker

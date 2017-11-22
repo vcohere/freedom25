@@ -215,5 +215,82 @@
     "data": {
       "folder": "pres"
     }
+  },
+  "Pricing": {
+    "Fond": [
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#ffffff"
+      },
+      {
+        "name": "Image",
+        "type": "file",
+        "value": ""
+      }
+    ],
+    "Titre": [
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#000000"
+      },
+      {
+        "name": "Texte",
+        "type": "text",
+        "value": "Faites chauffer la CB"
+      }
+    ],
+    "Sous-titre": [
+      {
+        "name": "Couleur",
+        "type": "text",
+        "value": "#000000"
+      },
+      {
+        "name": "Texte",
+        "type": "text",
+        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat vulputate risus a blandit. Nunc interdum diam viverra consectetur tempor. Donec eros urna, finibus dictum velit ut, porta accumsan tellus. Curabitur non dapibus magna. Aliquam a ante mi. Vivamus aliquet tristique sapien, a pretium erat euismod id. Curabitur fermentum, ante ac scelerisque mattis, ex lacus blandit dui, finibus egestas turpis magna vel eros. Nullam porttitor rhoncus nulla, in vehicula elit egestas at. Donec euismod accumsan bibendum. Proin et lorem sed enim euismod tristique tristique at diam."
+      }
+    ],
+    "Premier bloc": [
+      {
+        "name": "Prix",
+        "type": "number",
+        "value": "25"
+      },
+      {
+        "name": "Texte",
+        "type": "text",
+        "value": "Oui, c'est par mois."
+      }
+    ],
+    "Second bloc": [
+      {
+        "name": "Prix",
+        "type": "number",
+        "value": "45"
+      },
+      {
+        "name": "Texte",
+        "type": "text",
+        "value": "Celui ci est un poil plus cher."
+      }
+    ],
+    "Troisième bloc": [
+      {
+        "name": "Prix",
+        "type": "number",
+        "value": "85"
+      },
+      {
+        "name": "Texte",
+        "type": "text",
+        "value": "Personne prend cette offre, c'est pour vous faire acheter celle à 45."
+      }
+    ],
+    "data": {
+      "folder": "pricing"
+    }
   }
 }

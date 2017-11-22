@@ -1,26 +1,26 @@
 link(href="https://fonts.googleapis.com/css?family=Bitter|Raleway" rel="stylesheet")
 link(rel="stylesheet" href="/pages/pricing/style.min.css")
 
-#text_only.container.page
+#pricing.container.page
 	.row
 		h1
-			| Vous pouvez sortir votre CB
+			| #{ge('Pricing.Titre.Texte')}
 	.row
 		p.col-md-8.col-md-offset-2
-			| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat vulputate risus a blandit. Nunc interdum diam viverra consectetur tempor. Donec eros urna, finibus dictum velit ut, porta accumsan tellus. Curabitur non dapibus magna. Aliquam a ante mi. Vivamus aliquet tristique sapien, a pretium erat euismod id.
+			| #{ge('Pricing.Sous-titre.Texte')}
 	.row
 		.price.col-md-2.col-md-offset-2
 			.row
-				h1 25$
-				p Oui, c'est par mois.
+				h1 #{ge('Pricing.Premier bloc.Prix')}$
+				p #{ge('Pricing.Premier bloc.Texte')}
 				.button.col-md-8.col-md-offset-2 Acheter
 		.price.col-md-2.col-md-offset-1
 			.row
-				h1 45$
-				p Oui, c'est par mois.
+				h1 #{ge('Pricing.Second bloc.Prix')}$
+				p #{ge('Pricing.Second bloc.Texte')}
 				.button.col-md-8.col-md-offset-2 Acheter
 		.price.col-md-2.col-md-offset-1
 			.row
-				h1 85$
-				p Oui, c'est par mois.
+				h1 #{ge('Pricing.Troisième bloc.Prix')}$
+				p #{ge('Pricing.Troisième bloc.Texte')}
 				.button.col-md-8.col-md-offset-2 Acheter
