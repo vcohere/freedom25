@@ -4,8 +4,9 @@
   "description": "Easy websites, easy money, easy life",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon"
+    "start": "npx nodemon",
+    "up": "docker-compose up -d",
+    "reset": "docker-compose stop; docker rm freedom25_web_1 && docker rm freedom25_mongo_1"
   },
   "repository": {
     "type": "git",

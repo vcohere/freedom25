@@ -10,7 +10,8 @@ const http = require('http'),
 		morgan = require('morgan'),
 		Promise = require('promise'),
 		mongoose = require('mongoose'),
-		db = require('./lib/db')
+		db = require('./controllers/db'),
+		pageBuilder = require('./controllers/page-builder')
 
 const port = 8000,
 		app = express()
@@ -24,7 +25,7 @@ var storageMulter = multer.diskStorage({
     }
 })
 
-mongoose.connect('mongodb://mongo:27017')
+pageBuilder.build()
 
 const upload = multer({
 	storage: storageMulter

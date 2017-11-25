@@ -1,7 +1,8 @@
 var storage = null,
 		mkdirp = require('mkdirp'),
 		Promise = require('promise'),
-    fs = require('fs')
+    fs = require('fs'),
+		mongoose = require('mongoose')
 
 fs.watch('./db/data.json', () => { getData() })
 
