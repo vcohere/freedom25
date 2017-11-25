@@ -1,0 +1,28 @@
+link(rel="stylesheet" href="/pages/admin2/pages/style.min.css")
+
+#pages.view
+  each cat, h1 in data
+    .bloc
+      h1 #{h1}
+      each tab, h2 in cat
+        if h2 !== 'data'
+          h2 #{h2}
+          .collapsable
+            each val in tab
+              h3 #{val.name}
+              if val.type === 'radio'
+                +radio(h1, h2, val)
+              else if val.type === 'textarea'
+                +textarea(h1, h2, val)
+              else if val.type === 'file'
+                +file(h1, h2, val)
+              else
+                +text(h1, h2, val)
+  .bloc
+    .validate#validate
+      span
+        | Enregistrer
+        i.fa.fa-check
+      .load-wrap
+          .load
+            .square

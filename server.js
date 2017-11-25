@@ -9,6 +9,7 @@ const http = require('http'),
 		multer = require('multer'),
 		morgan = require('morgan'),
 		Promise = require('promise'),
+		mongoose = require('mongoose'),
 		db = require('./lib/db')
 
 const port = 8000,
@@ -23,11 +24,11 @@ var storageMulter = multer.diskStorage({
     }
 })
 
+mongoose.connect('mongodb://mongo:27017')
+
 const upload = multer({
 	storage: storageMulter
 })
-
-var storage = null
 
 app.set('view engine', 'pug')
 app.use(bodyParser.json())
@@ -52,7 +53,17 @@ app.get('/admin', (req, res) => {
 	res.render(__dirname + '/pages/admin/admin.pug', {
 		data: db.getStorage(),
 		removeSpaces: removeSpaces,
-		gf: db.getFolder
+		gf: db.getFolder,
+		gp: db.getPages
+	})
+})
+
+app.get('/admin2', (req, res) => {
+	res.render(__dirname + '/pages/admin2/admin.pug', {
+		data: db.getStorage(),
+		removeSpaces: removeSpaces,
+		gf: db.getFolder,
+		gp: db.getPages
 	})
 })
 

@@ -22,6 +22,8 @@ Done:
 - [x] Meilleur bouton et chargement
 - [x] Relier toutes les vues à la db
 - [x] Séparer le code Node en librairies
+- [x] Passer le panneau d'admin en bootstrap
+- [x] Passer en architecture Docker
 
 Pages:
 - [ ] Page de contact
@@ -48,8 +50,6 @@ Panneau d'admin:
 
 - [ ] Infobulles pour expliquer les champs du back-office
 
-- [ ] Passer le panneau d'admin en bootstrap
-
 - [ ] Interface pour choisir les pages qu'on veut et leur ordre
 
 - [ ] Modification des fonts depuis le back-office
@@ -66,8 +66,6 @@ Panneau d'admin:
 
 Back-end:
 - [ ] Installer lecteur et editeur de JSON
-
-- [ ] Passer en architecture Docker
 
 - [ ] Faire un environnement de dev et un de prod ( Plus tard plusieurs prod esclaves )
 

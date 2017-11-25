@@ -1,0 +1,31 @@
+mixin radio(cat, tab, data)
+	each value in data.options
+		if data.value === value
+			input(type='radio' value=value data-id=cat + tab + data.name name=removeSpaces(cat + tab + data.name) checked)
+		else
+			input(type='radio' value=value data-id=cat + tab + data.name name=removeSpaces(cat + tab + data.name))
+		label(for=removeSpaces(cat + tab + data.name)) #{value}
+
+mixin text(cat, tab, data)
+	// Il faut enlever le data.type et créer un mixin pour les nombres
+	input(type=data.type value=data.value data-id=cat + tab + data.name)
+
+mixin textarea(cat, tab, data)
+	textarea(data-id=cat + tab + data.name) #{data.value}
+
+mixin switch(cat, tab, data)
+	test
+
+mixin file(cat, tab, data)
+	form(enctype='multipart/form-data' method='post' class='form' action='/uploadPhoto' data-path=gf(cat) + '/' + tab data-key=cat+'.'+tab+'.'+data.name)
+		if data.value
+			.preview(style='background: url("'+data.value+'");background-size: cover;background-position: center center')
+		input(type='file' name=removeSpaces(cat + tab + data.name))
+		.validate.file-submit
+			span
+				| Envoyer
+				i.fa.fa-check
+				i.fa.fa-exclamation
+			.load-wrap
+					.load
+						.square
