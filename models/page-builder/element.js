@@ -64,13 +64,24 @@ class Element {
 
 	static updateElements(elements) {
 		return new Promise((resolve, reject) => {
-			for (var i = 0; i < elements.length; i++) {
-				ElementModel.findOneAndUpdate({_id: elements[i]._id}, elements[i], (err, docs) => {
-					if (err) reject(err)
+			var arr = []
 
-					resolve(docs)
-				})
+			for (var i = 0; i < elements.length; i++) {
+				if (elements[i]._id) {
+					arr.push(ElementModel.findOneAndUpdate({_id: elements[i]._id}, elements[i], {upsert: true, new: true}).exec())
+				}
+				else {
+					let res = new ElementModel(elements[i])
+
+					arr.push(res.save())
+				}
 			}
+
+			Promise.all(arr).then((data) => {
+				resolve(data)
+			}).catch((err) => {
+				reject(err)
+			})
 		})
 	}
 }

@@ -31,6 +31,20 @@ $(document).ready(function() {
              console.log('done');
            }
         });
+      },
+      newElement: function(i) {
+        this.blocks[i].elements.unshift({
+          name: 'new',
+          text: {
+            value: 'new',
+            input: 'text'
+          },
+          color: {
+            value: 'transparent',
+            input: 'text'
+          }
+        });
+        console.log(this.blocks);
       }
     }
   })

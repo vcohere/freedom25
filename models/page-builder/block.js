@@ -56,7 +56,12 @@ class Block {
         arr.push(Element.updateElements(blocks[i].elements))
       }
 
-      Promise.all(arr).then(() => {
+      Promise.all(arr).then((data) => {
+        let ids = []
+
+        for (var i = 0; i < data.length; i++) {
+          ids.push(data[i]._id)
+        }
         resolve(true)
       }).catch((err) => {
         reject(err)

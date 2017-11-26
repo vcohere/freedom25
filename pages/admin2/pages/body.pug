@@ -13,11 +13,13 @@ script var data = !{JSON.stringify(data)};
   .blocks-wrap
     h1 Blocs de la page
     h3 Sélectionnez une page pour afficher les blocs
-    .block(v-for='bloc in blocks')
+    .block(v-for='(bloc, i) in blocks')
       .element(v-for='element in bloc.elements')
         h2 {{element.name}}
-        .input-wrap(v-for='(input, i) in element' v-if='input !== null && typeof input === "object"' v-on:click='test(element)')
+        .input-wrap(v-for='input in element' v-if='input !== null && typeof input === "object"' v-on:click='test(element)')
           h3 {{input.name}}
           input(v-model='input.value' :type='input.input')
         .validate(v-on:click='validate')
           | Enregistrer
+      .new-element(v-on:click='newElement(i)' style='margin-bottom: 20px;')
+        | Nouveau élément
