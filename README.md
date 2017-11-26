@@ -24,6 +24,10 @@ Done:
 - [x] Séparer le code Node en librairies
 - [x] Passer le panneau d'admin en bootstrap
 - [x] Passer en architecture Docker
+- [x] Installer lecteur et editeur de JSON
+- [x] Passer à un vrai système de bdd
+- [x] Faire un environnement de dev Docker
+- [x] Automatiser les actions sur la bdd
 
 Pages:
 - [ ] Page de contact
@@ -65,18 +69,11 @@ Panneau d'admin:
 - [ ] Backup de DB + retour à la dernière backup
 
 Back-end:
-- [ ] Installer lecteur et editeur de JSON
-
-- [ ] Faire un environnement de dev et un de prod ( Plus tard plusieurs prod esclaves )
-
 - [ ] Automatiser les build et minification avec Gulp
-
-- [ ] Automatiser les actions sur la bdd
 
 - [ ] Unescaped buffered code PUG faille secu
 
 Futur:
-- [ ] Passer à un vrai système de bdd
 
 - [ ] Tests unitaires
 
