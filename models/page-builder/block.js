@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose'),
+      Element = require('./element')
 
 const Schema = mongoose.Schema
 
@@ -7,12 +8,9 @@ const Schema = mongoose.Schema
  */
 
 const BlockSchema = new Schema({
- 	elements: [{
- 		element: {
- 			kind: String,
- 			item: {type: Schema.Types.ObjectId, refPath: 'elements.element.kind'}
- 		}
-	}]
+ 	elements: [
+ 			{type: Schema.Types.ObjectId, ref: 'Element'}
+	]
 })
 
 const BlockModel = mongoose.model('Block', BlockSchema)
@@ -24,15 +22,10 @@ const BlockModel = mongoose.model('Block', BlockSchema)
 class Block {
 	constructor(elements) {
 		/*
-		 * [kind: String, item: Element]
+		 * [kind: String, item: Element.id]
 		 */
 
-		let tmp = []
-
-		for (var i = 0; i < elements.length; i++)
-			tmp.unshift({'element': elements[i]})
-
-		this.elements = tmp
+		this.elements = elements
 	}
 
 	get() {
@@ -48,17 +41,28 @@ class Block {
 			res.save((err, data) => {
 				if (err) reject(err)
 
-				BlockModel.find().populate('elements.element.item').exec((err, docs) => {
-					for (var i = 0; i < docs.length; i++) {
-						console.log(docs[i].elements[0])
-					}
-				})
-
+        console.log(err)
 				this.id = data.id
 				resolve(data.id)
 			})
 		})
 	}
+
+  static updateElementsInBlocks(blocks) {
+    return new Promise((resolve, reject) => {
+      var arr = []
+
+      for (var i = 0; i < blocks.length; i++) {
+        arr.push(Element.updateElements(blocks[i].elements))
+      }
+
+      Promise.all(arr).then(() => {
+        resolve(true)
+      }).catch((err) => {
+        reject(err)
+      })
+    })
+  }
 }
 
 module.exports = Block

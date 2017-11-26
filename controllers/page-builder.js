@@ -1,8 +1,9 @@
-var storage = null,
-		mkdirp = require('mkdirp'),
-		Promise = require('promise'),
-    fs = require('fs'),
+var Promise = require('promise'),
 		mongoose = require('mongoose')
+
+const Element = require('../models/page-builder/element')
+const Block = require('../models/page-builder/block')
+const Page = require('../models/page-builder/page')
 
 mongoose.connect('mongodb://mongo:27017')
 
@@ -12,27 +13,27 @@ db.on('error', () => {
 	console.log('MongoDB fatal error.')
 })
 
-const ElementText = require('../models/page-builder/element-text')
-
-const Block = require('../models/page-builder/block')
-
-var newText = new ElementText({
-	text: 'Salut',
-	color: 'black'
-})
-
 var pageBuilder = () => {
-	var p = new ElementText('plop', 'blue')
+	var p = new Element('Paragraphe', 'plop', 'pink')
 
 	p.save().then(() => {
-		var b = new Block([{'kind': 'ElementText', 'item': p.get().id}])
+		block = new Block([p.get().id])
 
-		b.save().then(() => {
-			console.log('wghart')
-		})
+		return block.save()
+	}).then(() => {
+		page = new Page('landing', [block.get().id])
+
+		return page.save()
+	}).then(() => {
+		console.log('success')
+	}).catch((err) => {
+		console.log(err)
 	})
 }
 
 module.exports = {
-	build: pageBuilder
+	build: pageBuilder,
+	Page: Page,
+	Block: Block,
+	Element: Element
 }

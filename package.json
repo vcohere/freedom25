@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npx nodemon",
     "up": "docker-compose up -d",
-    "reset": "docker-compose stop; docker rm freedom25_web_1 && docker rm freedom25_mongo_1"
+    "reset": "docker-compose stop; docker-compose up -d",
+    "resetdb": "docker-compose stop; docker rm freedom25_web_1 && docker rm freedom25_mongo_1"
   },
   "repository": {
     "type": "git",

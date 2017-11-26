@@ -7,9 +7,6 @@ html
 		link(href='/static/lib/font-awesome-4.7.0/css/font-awesome.min.css' rel='stylesheet')
 		link(rel="stylesheet" href="/pages/admin2/style.min.css")
 		script(src='/pages/admin/jquery-3.2.1.min.js')
-		script(src='http://malsup.github.com/jquery.form.js')
-		script.
-			old=!{JSON.stringify(data)};
 		script(src='/pages/admin2/controller.js')
 		include _mixins.pug
 	body.container-fluid
@@ -26,9 +23,10 @@ html
 					.col-xs-12
 						.element.active
 							| Statistiques
-						.element.collapser
+						//.element.collapser
+						.element
 							| Pages
-						.collapsable
+						//-.collapsable
 							each val in gp()
 								.element(data-folder=val)
 									| #{val}

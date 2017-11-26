@@ -1,28 +1,23 @@
 link(rel="stylesheet" href="/pages/admin2/pages/style.min.css")
+script(src="https://unpkg.com/vue")
+script(src="/pages/admin2/pages/controller.js")
+script var data = !{JSON.stringify(data)};
 
 #pages.view
-  each cat, h1 in data
-    .bloc
-      h1 #{h1}
-      each tab, h2 in cat
-        if h2 !== 'data'
-          h2 #{h2}
-          .collapsable
-            each val in tab
-              h3 #{val.name}
-              if val.type === 'radio'
-                +radio(h1, h2, val)
-              else if val.type === 'textarea'
-                +textarea(h1, h2, val)
-              else if val.type === 'file'
-                +file(h1, h2, val)
-              else
-                +text(h1, h2, val)
-  .bloc
-    .validate#validate
-      span
-        | Enregistrer
-        i.fa.fa-check
-      .load-wrap
-          .load
-            .square
+  .pages-wrap
+    h1 Pages
+    .page(v-for='page in pages' v-on:click='pageSelect(page._id)')
+        p {{page.name}}
+    .page
+      h1 +
+  .blocks-wrap
+    h1 Blocs de la page
+    h3 Sélectionnez une page pour afficher les blocs
+    .block(v-for='bloc in blocks')
+      .element(v-for='element in bloc.elements')
+        h2 {{element.name}}
+        .input-wrap(v-for='(input, i) in element' v-if='input !== null && typeof input === "object"' v-on:click='test(element)')
+          h3 {{input.name}}
+          input(v-model='input.value' :type='input.input')
+        .validate(v-on:click='validate')
+          | Enregistrer
