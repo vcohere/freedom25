@@ -1,8 +1,8 @@
 var Promise = require('promise'),
 		mongoose = require('mongoose')
 
-const Element = require('../models/page-builder/element')
 const Page = require('../models/page-builder/page')
+const Element = require('../models/page-builder/element')
 
 mongoose.connect('mongodb://mongo:27017')
 
