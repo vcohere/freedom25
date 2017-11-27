@@ -69,8 +69,8 @@ app.get('/admin2', (req, res) => {
 	})
 })
 
-app.get('/updateBlock', (req, res) => {
-	pageBuilder.Block.updateElementsInBlocks(req.query.blocks).then(() => {
+app.get('/updatePage', (req, res) => {
+	pageBuilder.Page.update({elements: req.query.elements}).then(() => {
 		res.sendStatus(200)
 	}).catch((err) => {
 		res.sendStatus(418)

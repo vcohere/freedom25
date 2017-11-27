@@ -62,7 +62,28 @@ class Element {
 		})
 	}
 
-	static updateElements(elements) {
+	static upsert(element) {
+		return new Promise((resolve, reject) => {
+			if (element._id) {
+				ElementModel.findOneAndUpdate({_id: element._id}, element, {upsert: true, new: true}).exec().then((data) => {
+					resolve(data)
+				}).catch((err) => {
+					reject(err)
+				})
+			}
+			else {
+				let res = new ElementModel(element)
+
+				res.save().then((data) => {
+					resolve(data)
+				}).catch((err) => {
+					reject(err)
+				})
+			}
+		})
+	}
+
+	/*static update(elements) {
 		return new Promise((resolve, reject) => {
 			var arr = []
 
@@ -83,7 +104,7 @@ class Element {
 				reject(err)
 			})
 		})
-	}
+	}*/
 }
 
 module.exports = Element

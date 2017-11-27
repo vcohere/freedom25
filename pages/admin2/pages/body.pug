@@ -3,23 +3,20 @@ script(src="https://unpkg.com/vue")
 script(src="/pages/admin2/pages/controller.js")
 script var data = !{JSON.stringify(data)};
 
-#pages.view
-  .pages-wrap
-    h1 Pages
-    .page(v-for='page in pages' v-on:click='pageSelect(page._id)')
+#pages.view.container
+  .pages-wrap.row
+    h1.col-xs-12 Pages
+    .page.col-xs-2(v-for='page in pages' v-on:click='pageSelect(page._id)')
         p {{page.name}}
-    .page
+    .page.col-xs-2
       h1 +
-  .blocks-wrap
-    h1 Blocs de la page
-    h3 Sélectionnez une page pour afficher les blocs
-    .block(v-for='(bloc, i) in blocks')
-      .element(v-for='element in bloc.elements')
-        h2 {{element.name}}
-        .input-wrap(v-for='input in element' v-if='input !== null && typeof input === "object"' v-on:click='test(element)')
-          h3 {{input.name}}
-          input(v-model='input.value' :type='input.input')
-        .validate(v-on:click='validate')
-          | Enregistrer
-      .new-element(v-on:click='newElement(i)' style='margin-bottom: 20px;')
-        | Nouveau élément
+  .elements-wrap.row
+    h2.col-xs-12(v-if='elements.length == 0') Sélectionnez une page pour afficher les éléments
+    h2.col-xs-12(v-if='elements.length > 0') Eléments de la page
+    .element.col-xs-4(v-for='element in elements')
+      h3 {{element.name}}
+      .input-wrap(v-for='input in element' v-if='input !== null && typeof input === "object"' v-on:click='test(element)')
+        h4 {{input.name}}
+        input(v-model='input.value' :type='input.input')
+      .validate(v-on:click='validate')
+        | Enregistrer

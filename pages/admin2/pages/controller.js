@@ -2,20 +2,22 @@ $(document).ready(function() {
   var getPage = function(id) {
     for (var i = 0; i < data.length; i++) {
       if (data[i]._id == id)
-        return data[i].blocks;
+        return data[i].elements;
     }
   };
 
   var pages = new Vue({
     el: '#pages',
     data: {
+      pageId: null,
       pages: data,
-      blocks: []
+      elements: []
     },
     methods: {
       pageSelect: function(id) {
-        this.blocks = getPage(id);
-        console.log(this.blocks);
+        this.pageId = id;
+        this.elements = getPage(id);
+        console.log(this.elements);
       },
       test: function(d, e, f) {
         console.log(d);
@@ -24,27 +26,13 @@ $(document).ready(function() {
       },
       validate: function() {
         $.ajax({
-           url : '/updateBlock',
+           url : '/updatePage',
            type : 'GET',
-           data: {blocks: this.blocks},
+           data: {_id: this.pageId, elements: this.elements},
            success: function() {
              console.log('done');
            }
         });
-      },
-      newElement: function(i) {
-        this.blocks[i].elements.unshift({
-          name: 'new',
-          text: {
-            value: 'new',
-            input: 'text'
-          },
-          color: {
-            value: 'transparent',
-            input: 'text'
-          }
-        });
-        console.log(this.blocks);
       }
     }
   })

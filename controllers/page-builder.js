@@ -2,7 +2,6 @@ var Promise = require('promise'),
 		mongoose = require('mongoose')
 
 const Element = require('../models/page-builder/element')
-const Block = require('../models/page-builder/block')
 const Page = require('../models/page-builder/page')
 
 mongoose.connect('mongodb://mongo:27017')
@@ -14,14 +13,13 @@ db.on('error', () => {
 })
 
 var pageBuilder = () => {
-	var p = new Element('Paragraphe', 'plop', 'pink')
+	var title = new Element('Titre', 'Lorem ipsum dolor sit amet.', '#000000')
+	var subtitle = new Element('Sous-titre', 'Lorem ipsum, dolor sit amet ? Lorem ipsum dolor sit amet.', '#424242')
 
-	p.save().then(() => {
-		block = new Block([p.get().id])
-
-		return block.save()
+	title.save().then(() => {
+		return subtitle.save()
 	}).then(() => {
-		page = new Page('landing', [block.get().id])
+		page = new Page('landing', 'pages/landing', [title.get().id, subtitle.get().id])
 
 		return page.save()
 	}).then(() => {
@@ -34,6 +32,5 @@ var pageBuilder = () => {
 module.exports = {
 	build: pageBuilder,
 	Page: Page,
-	Block: Block,
 	Element: Element
 }

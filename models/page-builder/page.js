@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
+const Element = require('./element')
 
 /*
  * Schema and model for MongoDB
@@ -8,8 +9,9 @@ const Schema = mongoose.Schema
 
 const PageSchema = new Schema({
   name: String,
- 	blocks: [
- 		{type: Schema.Types.ObjectId, ref: 'Block'}
+  path: String,
+ 	elements: [
+ 		{type: Schema.Types.ObjectId, ref: 'Element'}
 	]
 })
 
@@ -20,9 +22,9 @@ const PageModel = mongoose.model('Page', PageSchema)
  */
 
 class Page {
-	constructor(name, blocks) {
+	constructor(name, elements) {
     this.name = name
-		this.blocks = blocks
+		this.elements = elements
 	}
 
 	get() {
@@ -33,7 +35,7 @@ class Page {
 	save() {
 		// Save "this" in MongoDB collection and return the ID
 		return new Promise((resolve, reject) => {
-			let res = new PageModel({name: this.name, blocks: this.blocks})
+			let res = new PageModel({name: this.name, elements: this.elements})
 
 			res.save((err, data) => {
 				if (err) reject(err)
@@ -53,12 +55,8 @@ class Page {
   static getFull() {
     return new Promise((resolve, reject) => {
       PageModel.find().populate({
-        path: 'blocks',
-        model: 'Block',
-        populate: {
-          path: 'elements',
-          model: 'Element'
-        }
+        path: 'elements',
+        model: 'Element'
       }).exec((err, docs) => {
         if (err) reject(err)
 
@@ -76,6 +74,22 @@ class Page {
       })
     })
   }
+
+  static update(page) {
+		return new Promise((resolve, reject) => {
+			var arr = []
+
+			for (var i = 0; i < page.elements.length; i++) {
+				arr.push(Element.upsert(page.elements[i]))
+			}
+
+			Promise.all(arr).then((data) => {
+				resolve(data)
+			}).catch((err) => {
+				reject(err)
+			})
+		})
+	}
 }
 
 module.exports = Page
