@@ -12,7 +12,7 @@ db.on('error', () => {
 	console.log('MongoDB fatal error.')
 })
 
-var pageBuilder = () => {
+/*var pageBuilder = () => {
 	var title = new Element('Titre', 'Lorem ipsum dolor sit amet.', '#000000')
 	var subtitle = new Element('Sous-titre', 'Lorem ipsum, dolor sit amet ? Lorem ipsum dolor sit amet.', '#424242')
 
@@ -27,10 +27,13 @@ var pageBuilder = () => {
 	}).catch((err) => {
 		console.log(err)
 	})
-}
+}*/
+
+const testGenerator = require('../pages/test/generator')
+
+testGenerator.generator(true)
 
 module.exports = {
-	build: pageBuilder,
 	Page: Page,
 	Element: Element
 }

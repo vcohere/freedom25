@@ -10,6 +10,7 @@ const Element = require('./element')
 const PageSchema = new Schema({
   name: String,
   path: String,
+  active: Boolean,
  	elements: [
  		{type: Schema.Types.ObjectId, ref: 'Element'}
 	]
@@ -18,13 +19,15 @@ const PageSchema = new Schema({
 const PageModel = mongoose.model('Page', PageSchema)
 
 /*
- * Actual Textblock object definition
+ * Actual Page object definition
  */
 
 class Page {
-	constructor(name, elements) {
+	constructor(name, path, active, elements) {
     this.name = name
+    this.path = path
 		this.elements = elements
+    this.active = active
 	}
 
 	get() {
@@ -35,7 +38,7 @@ class Page {
 	save() {
 		// Save "this" in MongoDB collection and return the ID
 		return new Promise((resolve, reject) => {
-			let res = new PageModel({name: this.name, elements: this.elements})
+			let res = new PageModel({name: this.name, path: this.path, elements: this.elements})
 
 			res.save((err, data) => {
 				if (err) reject(err)
@@ -90,6 +93,10 @@ class Page {
 			})
 		})
 	}
+
+  static toggleActive(id) {
+    
+  }
 }
 
 module.exports = Page

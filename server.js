@@ -1,7 +1,6 @@
 require("babel-core").transform("code")
 
 const http = require('http'),
-		fs = require('fs'),
     express = require('express'),
 		pug = require('pug'),
     serveStatic = require('serve-static'),
@@ -10,26 +9,12 @@ const http = require('http'),
 		morgan = require('morgan'),
 		Promise = require('promise'),
 		mongoose = require('mongoose'),
-		db = require('./controllers/db'),
 		pageBuilder = require('./controllers/page-builder')
 
 const port = 8000,
 		app = express()
 
-var storageMulter = multer.diskStorage({
-    destination: function(req, file, callback){
-        callback(null, './static/img'); // set the destination
-    },
-    filename: function(req, file, callback){
-        callback(null, Date.now() + '.jpg'); // set the file name and extension
-    }
-})
-
 //pageBuilder.build()
-
-const upload = multer({
-	storage: storageMulter
-})
 
 app.set('view engine', 'pug')
 app.use(bodyParser.json())
@@ -41,27 +26,12 @@ app.use('/static', serveStatic(__dirname + '/static'))
 app.all('/*', morgan('tiny'))
 
 app.get('/', (req, res) => {
-  res.render(__dirname + '/index.pug', {
-		ge: db.getElement,
-		gp: db.getPages,
-		gf: db.getFolder,
-		isInPages: db.isInPages,
-		multi: db.getMultiPage()
-	})
+  res.render(__dirname + '/index.pug')
 })
 
 app.get('/admin', (req, res) => {
-	res.render(__dirname + '/pages/admin/admin.pug', {
-		data: db.getStorage(),
-		removeSpaces: removeSpaces,
-		gf: db.getFolder,
-		gp: db.getPages
-	})
-})
-
-app.get('/admin2', (req, res) => {
 	pageBuilder.Page.getFull().then((data) => {
-		res.render(__dirname + '/pages/admin2/admin.pug', {
+		res.render(__dirname + '/pages/admin/admin.pug', {
 			data: data
 		})
 	}).catch((err) => {
@@ -78,18 +48,7 @@ app.get('/updatePage', (req, res) => {
 	})
 })
 
-app.post('/uploadPhoto', upload.any(), (req, res) => {
-	db.storeUpload(req.files, req.body).then(() => {
-		res.sendStatus(200)
-	}).catch((err) => {
-		console.log(err)
-		res.sendStatus(418)
-	})
-})
-
 http.createServer(app).listen(port)
-
-db.getData()
 
 console.log('WEB: Started at http://localhost:'+port+'/')
 
