@@ -1,14 +1,29 @@
 $(document).ready(function() {
-  if (multi) {
-    $('.page').not(':first').hide();
-
-    $('.menu a').on('click', function() {
-      var curr = $(this).attr('href');
-
-      $('.page').hide();
-      $(curr + '.page').show();
-    });
-
-    $('.page').not('#landing').css('padding-top', '50px');
-  }
-});
+  var app = new Vue({
+    el: '#container',
+    data: {
+    },
+    methods: {
+      pageSelect: function(id) {
+        this.pageId = id;
+        this.elements = getPage(id);
+        console.log(this.elements);
+      },
+      test: function(d, e, f) {
+        console.log(d);
+        console.log(e);
+        console.log(f);
+      },
+      validate: function() {
+        $.ajax({
+           url : '/updatePage',
+           type : 'GET',
+           data: {_id: this.pageId, elements: this.elements},
+           success: function() {
+             console.log('done');
+           }
+        });
+      }
+    }
+  })
+})

@@ -9,7 +9,7 @@ services:
     volumes:
       - ../:/home/node/app
     ports:
-        - "8000:8000"
+        - "7000:8000"
     command: "npm start"
     links:
       - mongo

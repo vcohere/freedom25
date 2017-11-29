@@ -4,6 +4,8 @@ var Promise = require('promise'),
 const Page = require('../models/page-builder/page')
 const Element = require('../models/page-builder/element')
 
+const appDir = require('path').dirname(require.main.filename)
+
 mongoose.connect('mongodb://mongo:27017')
 
 var db = mongoose.connection
@@ -12,28 +14,41 @@ db.on('error', () => {
 	console.log('MongoDB fatal error.')
 })
 
-/*var pageBuilder = () => {
-	var title = new Element('Titre', 'Lorem ipsum dolor sit amet.', '#000000')
-	var subtitle = new Element('Sous-titre', 'Lorem ipsum, dolor sit amet ? Lorem ipsum dolor sit amet.', '#424242')
-
-	title.save().then(() => {
-		return subtitle.save()
-	}).then(() => {
-		page = new Page('landing', 'pages/landing', [title.get().id, subtitle.get().id])
-
-		return page.save()
-	}).then(() => {
-		console.log('success')
-	}).catch((err) => {
-		console.log(err)
-	})
-}*/
-
 const testGenerator = require('../pages/test/generator')
 
-testGenerator.generator(true)
+const transformPages = (pages) => {
+  var res = {}
+
+  for (var i = 0; i < pages.length; i++) {
+    var tmp = pages[i].name
+
+    res[tmp] = transformElements(pages[i].elements)
+    res[tmp].active = pages[i].active
+  }
+
+  return res
+}
+
+const transformElements = (elements) => {
+  let res = {}
+
+  for (var i = 0; i < elements.length; i++) {
+    let tmp = elements[i].name
+    let tmmp = {}
+
+    for (var j in elements[i]) {
+      if (typeof elements[i][j] == 'object' && elements[i][j].value)
+        tmmp[j] = elements[i][j].value
+    }
+
+    res[tmp] = tmmp
+  }
+
+  return res
+}
 
 module.exports = {
-	Page: Page,
-	Element: Element
+	transformPages: transformPages,
+	getActives: Page.getActives,
+	getFullData: Page.getFull
 }

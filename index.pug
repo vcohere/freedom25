@@ -1,21 +1,13 @@
 doctype html
 html
 	head
-		title Freedom35
+		title Freedom25
 		link(href='/static/lib/bootstrap-3.3.7/css/bootstrap.css' rel='stylesheet')
 		script(src='/pages/admin/jquery-3.2.1.min.js')
+		script(src="https://unpkg.com/vue")
 		script(src='static/js/controller.js')
-		script.
-			multi = #{multi}
 	body
-		if (ge('Navigation.Disposition.Choix') == 'nav1')
+		#container
 			include navs/nav1/content.pug
-		if (ge('Navigation.Disposition.Choix') == 'nav2')
-			include navs/nav2/content.pug
-
-		if (isInPages('Accueil'))
-			include pages/landing/content.pug
-		if (isInPages('Présentation'))
-			include pages/pres/content.pug
-		if (isInPages('Pricing'))
-			include pages/pricing/content.pug
+			if data.test.active
+				include pages/test/content.pug

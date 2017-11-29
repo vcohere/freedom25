@@ -38,7 +38,7 @@ class Page {
 	save() {
 		// Save "this" in MongoDB collection and return the ID
 		return new Promise((resolve, reject) => {
-			let res = new PageModel({name: this.name, path: this.path, elements: this.elements})
+			let res = new PageModel({name: this.name, path: this.path, active: this.active, elements: this.elements})
 
 			res.save((err, data) => {
 				if (err) reject(err)
@@ -56,6 +56,7 @@ class Page {
 	}
 
   static getFull() {
+    // Récupère les pages avec populate()
     return new Promise((resolve, reject) => {
       PageModel.find().populate({
         path: 'elements',
@@ -69,6 +70,7 @@ class Page {
   }
 
   static getPages() {
+    // Récupère toutes les pages sans populate()
     return new Promise((resolve, reject) => {
       PageModel.find().exec((err, docs) => {
         if (err) reject(err)
@@ -94,8 +96,33 @@ class Page {
 		})
 	}
 
-  static toggleActive(id) {
-    
+  static pageDontExists(name) {
+    // Vérifie si une page existe avant de la créer en base
+    return new Promise((resolve, reject) => {
+      PageModel.count({name: name}, (err, count) => {
+        if (count > 0)
+          reject('Page exists')
+        else
+          resolve(true)
+      })
+    })
+  }
+
+  static getActives() {
+    // Renvoie le nom des pages actives
+    return new Promise((resolve, reject) => {
+      PageModel.find({active: true}, (err, docs) => {
+        if (err) reject(err)
+        else {
+          let res = {}
+
+          for (var i in docs) {
+            res[docs[i].name] = true
+          }
+          resolve(res)
+        }
+      })
+    })
   }
 }
 

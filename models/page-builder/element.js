@@ -82,29 +82,6 @@ class Element {
 			}
 		})
 	}
-
-	/*static update(elements) {
-		return new Promise((resolve, reject) => {
-			var arr = []
-
-			for (var i = 0; i < elements.length; i++) {
-				if (elements[i]._id) {
-					arr.push(ElementModel.findOneAndUpdate({_id: elements[i]._id}, elements[i], {upsert: true, new: true}).exec())
-				}
-				else {
-					let res = new ElementModel(elements[i])
-
-					arr.push(res.save())
-				}
-			}
-
-			Promise.all(arr).then((data) => {
-				resolve(data)
-			}).catch((err) => {
-				reject(err)
-			})
-		})
-	}*/
 }
 
 module.exports = Element

@@ -14,8 +14,6 @@ const http = require('http'),
 const port = 8000,
 		app = express()
 
-//pageBuilder.build()
-
 app.set('view engine', 'pug')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -26,11 +24,27 @@ app.use('/static', serveStatic(__dirname + '/static'))
 app.all('/*', morgan('tiny'))
 
 app.get('/', (req, res) => {
-  res.render(__dirname + '/index.pug')
+  var full, pages
+  pageBuilder.getFullData().then((data) => {
+    full = pageBuilder.transformPages(data)
+
+    return pageBuilder.getActives()
+  }).catch((err) => {
+    console.log(err)
+  }).then((data) => {
+    pages = data
+
+    res.render(__dirname + '/index.pug', {
+      data: full,
+      pages: pages
+    })
+  }).catch((err) => {
+    console.log(err)
+  })
 })
 
 app.get('/admin', (req, res) => {
-	pageBuilder.Page.getFull().then((data) => {
+	pageBuilder.getFullData().then((data) => {
 		res.render(__dirname + '/pages/admin/admin.pug', {
 			data: data
 		})
@@ -40,7 +54,7 @@ app.get('/admin', (req, res) => {
 })
 
 app.get('/updatePage', (req, res) => {
-	pageBuilder.Page.update({elements: req.query.elements}).then(() => {
+	Page.update({elements: req.query.elements}).then(() => {
 		res.sendStatus(200)
 	}).catch((err) => {
 		res.sendStatus(418)
@@ -51,7 +65,3 @@ app.get('/updatePage', (req, res) => {
 http.createServer(app).listen(port)
 
 console.log('WEB: Started at http://localhost:'+port+'/')
-
-const removeSpaces = (str) => {
-	return str.replace(/\s/g, '')
-}
