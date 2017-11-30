@@ -63,8 +63,7 @@ class Page {
         model: 'Element'
       }).exec((err, docs) => {
         if (err) reject(err)
-
-        resolve(docs)
+        else resolve(docs)
       })
     })
   }
@@ -74,8 +73,7 @@ class Page {
     return new Promise((resolve, reject) => {
       PageModel.find().exec((err, docs) => {
         if (err) reject(err)
-
-        resolve(docs)
+        else resolve(docs)
       })
     })
   }

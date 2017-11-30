@@ -24,19 +24,10 @@ app.use('/static', serveStatic(__dirname + '/static'))
 app.all('/*', morgan('tiny'))
 
 app.get('/', (req, res) => {
-  var full, pages
-  pageBuilder.getFullData().then((data) => {
-    full = pageBuilder.transformPages(data)
-
-    return pageBuilder.getActives()
-  }).catch((err) => {
-    console.log(err)
-  }).then((data) => {
-    pages = data
-
+  pageBuilder.getActivesAndTransformed().then((ret) => {
     res.render(__dirname + '/index.pug', {
-      data: full,
-      pages: pages
+      data: ret[0],
+      actives: ret[1]
     })
   }).catch((err) => {
     console.log(err)
@@ -44,13 +35,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
-	pageBuilder.getFullData().then((data) => {
-		res.render(__dirname + '/pages/admin/admin.pug', {
-			data: data
-		})
-	}).catch((err) => {
-		console.log(err)
-	})
+  pageBuilder.getActivesAndFull().then((ret) => {
+    res.render(__dirname + '/pages/admin/admin.pug', {
+      data: ret[0],
+      actives: ret[1]
+    })
+  }).catch((err) => {
+    console.log(err)
+  })
 })
 
 app.get('/updatePage', (req, res) => {

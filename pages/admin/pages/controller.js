@@ -36,4 +36,6 @@ $(document).ready(function() {
       }
     }
   })
+
+  console.log(pages.pages);
 })

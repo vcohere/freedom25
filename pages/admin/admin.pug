@@ -1,7 +1,7 @@
 doctype html
 html
 	head
-		title Freedom35 Admin
+		title Freedom25 Admin
 		link(href="https://fonts.googleapis.com/css?family=Bitter|Raleway" rel="stylesheet")
 		link(href='/static/lib/bootstrap-3.3.7/css/bootstrap.css' rel='stylesheet')
 		link(href='/static/lib/font-awesome-4.7.0/css/font-awesome.min.css' rel='stylesheet')
@@ -10,37 +10,39 @@ html
 		script(src='/pages/admin/controller.js')
 		include _mixins.pug
 	body.container-fluid
-		.row
-			#header.col-lg-12
-				.row
-					.icons.col-md-6.col-md-offset-6
-						a(href='/')
-							.logout.fa.fa-power-off.fa-4x
-						a(href='/')
-							.home.fa.fa-home.fa-4x
-			#sidebar.col-xs-2
-				.row
-					.col-xs-12
-						.element.active
-							| Statistiques
-						//.element.collapser
-						.element
-							| Pages
-						//-.collapsable
-							each val in gp()
-								.element(data-folder=val)
-									| #{val}
-						.element
-							| Images
-						.element
-							| Apparence
-						.element
-							| Réglages
-			#body.col-xs-10.col-xs-offset-2
-				.carrousel
-					include stats/body.pug
-					include pages/body.pug
-					include images/body.pug
-					include apparence/body.pug
-					include settings/body.pug
-					
+		#admin
+			.row
+				#header.col-lg-12
+					.row
+						.icons.col-md-6.col-md-offset-6
+							a(href='/')
+								.logout.fa.fa-power-off.fa-4x
+							a(href='/')
+								.home.fa.fa-home.fa-4x
+				#sidebar.col-xs-2
+					.row
+						.col-xs-12
+							.element.active
+								| Statistiques
+							.element.collapser
+								| Pages
+							.collapsable
+								each val, i in actives
+									.element(data-folder=i)
+										| #{i}
+								.element
+									| Créer une page
+							.element
+								| Images
+							.element
+								| Apparence
+							.element
+								| Réglages
+				#body.col-xs-10.col-xs-offset-2
+					.carrousel
+						include stats/body.pug
+						include pages/body.pug
+						include images/body.pug
+						include apparence/body.pug
+						include settings/body.pug
+						

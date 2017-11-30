@@ -47,8 +47,41 @@ const transformElements = (elements) => {
   return res
 }
 
+const getActivesAndFull = () => {
+	return new Promise((resolve, reject) => {
+		var datas = [
+			Page.getFull(),
+			Page.getActives()
+		]
+
+		Promise.all(datas).then((ret) => {
+			resolve(ret)
+		}).catch((err) => {
+			reject(err)
+		})
+	})
+}
+
+const getActivesAndTransformed = () => {
+	return new Promise((resolve, reject) => {
+		var datas = [
+			Page.getFull(),
+			Page.getActives()
+		]
+
+		Promise.all(datas).then((ret) => {
+			ret[0] = transformPages(ret[0])
+			resolve(ret)
+		}).catch((err) => {
+			reject(err)
+		})
+	})
+}
+
 module.exports = {
 	transformPages: transformPages,
 	getActives: Page.getActives,
-	getFullData: Page.getFull
+	getFullData: Page.getFull,
+	getActivesAndFull: getActivesAndFull,
+	getActivesAndTransformed: getActivesAndTransformed
 }

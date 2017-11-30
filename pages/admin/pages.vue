@@ -1,3 +1,4 @@
+<template lang='pug'>
 link(rel="stylesheet" href="/pages/admin/pages/style.min.css")
 script(src="https://unpkg.com/vue")
 script(src="/pages/admin/pages/controller.js")
@@ -16,3 +17,4 @@ script var data = !{JSON.stringify(data)};
         input(v-model='input.value' :type='input.input')
       .validate(v-on:click='validate')
         | Enregistrer
+</template>

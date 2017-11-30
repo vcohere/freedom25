@@ -69,7 +69,9 @@ Panneau d'admin:
 - [ ] Backup de DB + retour à la dernière backup
 
 Back-end:
-- [ ] Automatiser les build et minification avec Gulp
+- [ ] Passer à Yarn
+
+- [ ] Passer à Browserify, Gulp, et Watchify
 
 - [ ] Unescaped buffered code PUG faille secu
 
