@@ -1,10 +1,3 @@
-## Freedom35
-
-> *Thing with me is that... I am smart, and I'm self-smarted basically by myself.*
-> *Basically from nature and smoking drugs and doing different things, I've self, like, self-learned myself.*
-
-Ricky
-
 ## Todo
 
 Done:
